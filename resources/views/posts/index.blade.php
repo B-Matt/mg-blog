@@ -17,9 +17,9 @@
     <div class="blog-posts row">
       @foreach ($posts as $post)
         @if($loop->iteration == 1)
-          <div class="sticky-post mx-auto mb-5">
+          <div class="sticky-post mx-auto">
         @else
-          <div class="normal-post col-md-4 mb-4">
+          <div class="normal-post col-md-4">
         @endif
             <div class="card mx-auto">
             @if($loop->iteration == 1)
@@ -40,7 +40,7 @@
                       <span class="mr-1">
                         {{ $post->author->name }} 
                       </span>
-                      <span  class="mr-1">&ndash;</span>
+                      <span  class="text-muted mr-1">&ndash;</span>
                       <span class="text-muted">
                         {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
                       </span>

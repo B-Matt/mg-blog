@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto); @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Oswald); @charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
@@ -34,7 +35,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Roboto", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +67,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Rooto", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6400,7 +6401,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6525,7 +6526,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10947,9 +10948,13 @@ a.text-dark:focus {
 .normal-post .card {
   border: none;
   border-radius: 0;
-  -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.25);
-  -moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.25);
-  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.25);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+}
+
+.normal-post .card-body {
+  padding: 20px 35px 10px;
 }
 
 .normal-post .card {
@@ -10961,12 +10966,17 @@ a.text-dark:focus {
   border-radius: 0;
 }
 
-.normal-post:hover {
-  top: -5px;
-}
-
 .sticky-post {
   width: 97.5%;
+  margin-bottom: 60px;
+}
+
+.normal-post {
+  margin-bottom: 45px;
+}
+
+.normal-post:hover {
+  top: -5px;
 }
 
 .sticky-post .card-title,
@@ -10974,7 +10984,7 @@ a.text-dark:focus {
   font-family: oswald, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  color: #6a23b5;  
+  color: #2149b5;  
 }
 
 .sticky-post .card-title {
@@ -10987,13 +10997,19 @@ a.text-dark:focus {
   letter-spacing: .13rem;
 }
 
+.sticky-post .card-subtitle,
+.normal-post .card-subtitle {
+  color: #2149b5;
+  letter-spacing: .1rem;
+}
+
 .sticky-post .card-text, 
 .normal-post .card-text {
   font-size: 1.02em;
-  color: #333;
+  color: #6c757d;
 }
 
-.sticky-post .card-subtitle,
-.normal-post .card-subtitle {
+.sticky-post .btn-link, 
+.normal-post .btn-link {
   color: #2149b5;
 }
