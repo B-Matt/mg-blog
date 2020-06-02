@@ -21,6 +21,7 @@
         @else
           <div class="normal-post col-md-4">
         @endif
+            <a href="{{Route('posts.show', $post->slug)}}" class="post-link"></a>
             <div class="card mx-auto">
             @if($loop->iteration == 1)
             <div class="row no-gutters">
@@ -50,9 +51,15 @@
                         {!! $post->summary_html !!}
                     </span>
                     @if($loop->iteration == 1)
-                    <a href="{{Route('posts.show', $post->slug)}}" class="mt-auto ml-auto px-0 pr-2 btn btn-link">Read more</a>
+                    <a href="{{Route('posts.show', $post->slug)}}" class="d-inline-flex mt-auto ml-auto px-0 pr-2 btn btn-link">
+                      Read more 
+                      <img src="{{ asset('/img/arrows.png') }}" class="ml-2" alt="Read more arrows" width="12" height="11" />
+                    </a>
                     @else
-                    <a href="{{Route('posts.show', $post->slug)}}" class="mt-auto mr-auto px-0 btn btn-link">Read more</a>
+                    <a href="{{Route('posts.show', $post->slug)}}" class="d-inline-flex mt-auto mr-auto px-0 btn btn-link">
+                      Read more 
+                      <img src="{{ asset('/img/arrows.png') }}" class="ml-2" alt="Read more arrows" width="12" height="11" />
+                    </a>
                     @endif
                 </div>
                 @if($loop->iteration == 1)
