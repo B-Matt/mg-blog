@@ -40,7 +40,9 @@ class LoginController extends Controller
     }
 
     /**
-     * Logins 
+     * Logs in user and shows dashboard.
+     * 
+     * @return redirect
      */
     public function login(Request $request)
     {  
@@ -54,7 +56,7 @@ class LoginController extends Controller
   
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            //return redirect()->route('home');
+            return redirect()->route('home');
         }
         else
         {
