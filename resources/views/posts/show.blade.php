@@ -20,10 +20,29 @@
     </div>
 </div>
 
-<div class="bp-body-container container mb-5">
-    <article class="bp-body pt-5 pb-5">
-        {!! $post->body_html !!}
-    </article>
+<div class="container-fluid py-5">
+    <div class="row">
+        <article class="col-md-6 offset-3">
+            <div class="bp-body">
+                {!! $post->body_html !!}
+            </div>
+        </article>
+        <div class="col-md-3">
+            <div class="bp-sidebar">
+                <ul class="bp-tags px-0">
+                    <li style="background: red">Devblog</li>
+                    <li>Test</li>
+                </ul>
+                <span class="bp-share">Share this post:</span>
+                <ul class="bp-social mt-0 px-0">
+                    <li><a href="https://www.facebook.com/MasterGamesStudios/" rel="noopener" target="_blank"
+                            title="Share blog post on Facebook" hreflang="en"><i class="flaticon-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/MasterGamesStu2?lang=en" rel="noopener" target="_blank"
+                            title="Share blog posts on Twitter" hreflang="en"><i class="flaticon-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="bp-author">

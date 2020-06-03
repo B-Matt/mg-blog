@@ -11263,7 +11263,7 @@ a.text-dark:focus {
 .bp-header-title {
     position: absolute;
     width: 100%;
-    bottom: 10%;
+    bottom: 30%;
     font-family: "Oswald", sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -11294,10 +11294,6 @@ a.text-dark:focus {
     -webkit-mask-image: -webkit-linear-gradient(top, white 30%, transparent 100%);
     -moz-mask-image: -moz-linear-gradient(top, white 30%, transparent 100%);
     mask-image: linear-gradient(white 30%, transparent 100%);
-}
-
-.bp-body-container {
-    max-width: 850px;
 }
 
 .bp-body {
@@ -11344,11 +11340,46 @@ a.text-dark:focus {
     padding: 2px;
 }
 
-.bp-author-stext {
+.bp-author-stext,
+.bp-share {
     font-size: .8rem;
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+.bp-sidebar {
+    padding-top: 3rem
+}
+
+.bp-sidebar:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1px;
+    height: 15%;
+    background: #e6e6e6;
+    left: 70px;
+}
+
+.bp-share {
+    margin-left: 10rem;
+}
+
+.bp-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bp-tags li {
+    list-style: none;
+    background-color: #6a23b5;
+    line-height: 1;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    margin-right: 15px;
 }
 
 /*------------------------
@@ -11372,18 +11403,21 @@ a.text-dark:focus {
     max-height: 80px;
 }
 
-.footer-follow {
+.footer-follow,
+.bp-social {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.footer-follow li {
+.footer-follow li,
+.bp-social li {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 13px;
 }
 
-.footer-follow li a {
+.footer-follow li a,
+.bp-social li a {
     display: inline-block;
     color: #6a23b5;
     width: 50px;
@@ -11397,7 +11431,8 @@ a.text-dark:focus {
     transition: all 0.25s ease 0s;
 }
 
-.footer-follow li a:hover {
+.footer-follow li a:hover,
+.bp-social li a:hover {
     color: #2be6ab;
     border: 1px solid #2be6ab;
     text-decoration: none;
