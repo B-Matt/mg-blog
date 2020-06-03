@@ -11040,9 +11040,10 @@ a.text-dark:focus {
 }
 
 .header-section {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
+    height: 94px;
     width: 100%;
     z-index: 999;
     padding: 0 50px;
@@ -11249,18 +11250,6 @@ a.text-dark:focus {
     position: relative;
 }
 
-.bp-back {
-    position: absolute;
-    top: 10px;
-    left: 25px;
-    z-index: 55;
-}
-
-.bp-back a {
-    font-size: .9rem;
-    color: white;
-}
-
 .bp-overlay {
     position: absolute;
     width: 100%;
@@ -11272,16 +11261,12 @@ a.text-dark:focus {
 }
 
 .bp-header-title {
-    position: relative;
-    margin-top: -50px;
-    background: #220c3b;
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
     font-family: "Oswald", sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    color: white;
-    -webkit-box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.15);
 }
 
 .bp-header-title h1 {
@@ -11291,13 +11276,51 @@ a.text-dark:focus {
     color: #0b1033;
 }
 
+.bp-header-title h6 {
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
+}
+
 .bp-header-content {
-    position: relative;
     width: 100%;
+    height: 500px;
+}
+
+.bp-header-cover img {
     height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 5;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: -webkit-linear-gradient(top, white 30%, transparent 100%);
+    -moz-mask-image: -moz-linear-gradient(top, white 30%, transparent 100%);
+    mask-image: linear-gradient(white 30%, transparent 100%);
+}
+
+.bp-body-container {
+    max-width: 850px;
+}
+
+.bp-body {
+    font-size: 1.02em;
+    color: #6c757d;
+    text-align: justify;
+}
+
+.bp-body h1 {
+    font: bold 2rem "Oswald", sans-serif;
+    text-transform: uppercase;
+    color: #2149b5;
+    margin-top: 3rem;
+    letter-spacing: 0.05em;
+}
+
+.bp-body p {
+    letter-spacing: 0.08em;
+}
+
+.bp-body img {
+    display: block;
+    margin: 20px 0px 20px 0px;
 }
 
 .bp-author {

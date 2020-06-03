@@ -2,36 +2,28 @@
 
 @section('content')
 <div class="bp-header">
-    <div class="bp-back">
-        <a class="text-left" href="{{ url()->previous() }}">
-            Back to blog
-        </a>
-    </div>
     <div class="bp-header-content">
-        <div class="text-center">
+        <div class="bp-header-cover h-100 w-100">
             <img src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover" class="img-fluid" />
-        </div>
-        <div class="bp-header-title">
-            <div class="col-md-5 mx-auto">
-                <div class="bp-title pt-3 pb-3 text-center">
-                    <h1 class="mb-0">{{$post->title}}</h1>
-                    <h6 class="mb-0">
-                        {{ $post->author->name }} &ndash; {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
-                    </h6>
+            <div class="bp-header-title">
+                <div class="col-md-5 mx-auto">
+                    <div class="bp-title pt-3 pb-3 text-center">
+                        <h1 class="mb-0">{{$post->title}}</h1>
+                        <h6 class="mb-0">
+                            {{ $post->author->name }} &ndash;
+                            {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
+                        </h6>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <article class="bp-body pt-5 pb-5">
-                {!! $post->body_html !!}
-            </article>
-        </div>
-    </div>
+<div class="bp-body-container container mb-5">
+    <article class="bp-body pt-5 pb-5">
+        {!! $post->body_html !!}
+    </article>
 </div>
 
 <div class="bp-author">

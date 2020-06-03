@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-
-    <div class="row mb-5">
-        <div class="col text-center">
-            <h1 class="text-center text-3xl my-8">Blog Posts</h1>
-
-            @auth
-            <a class="my-3 hover:underline" href="{{route('posts.create')}}">New article</a>
-            @endauth
-
-        </div>
-    </div>
-
+<div class="container-fluid mt-5">
     <div class="blog-posts row">
       @foreach ($posts as $post)
         @if($loop->iteration == 1)
