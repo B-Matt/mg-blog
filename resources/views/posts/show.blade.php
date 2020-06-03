@@ -1,16 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="text-gray-800 md:w-2/3 lg:w-3/5 xl:w-1/2 sm:w-full mx-auto">
-
-    <div class="text-left pb-4 mt-4">
-      <a class="text-sm leading-5 text-gray-700 hover:underline" href="{{ url()->previous() }}">Back to blog</a>
+<div class="bp-header">
+    <div class="bp-back">
+        <a class="text-left" href="{{ url()->previous() }}">
+            Back to blog
+        </a>
     </div>
+    <div class="bp-header-content">
+        <div class="text-center">
+            <img src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover" class="img-fluid" />
+        </div>
+        <div class="bp-header-title">
+            <div class="col-md-5 mx-auto">
+                <div class="bp-title pt-3 pb-3 text-center">
+                    <h1 class="mb-0">{{$post->title}}</h1>
+                    <h6 class="mb-0">
+                        {{ $post->author->name }} &ndash; {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <h1 class="text-5xl text-center ">{{$post->title}}</h1>
-    <p class="text-sm text-center leading-5 text-gray-700 mt-3">Posted {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}</p>
-    <article class="markdown-body">
-      {!! $post->body_html !!}
-    </article>
-</main>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <article class="bp-body pt-5 pb-5">
+                {!! $post->body_html !!}
+            </article>
+        </div>
+    </div>
+</div>
+
+<div class="bp-author">
+    <div class="bp-overlay"></div>
+    <div class="w-50 mx-auto my-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}'s Avatar" />
+                </div>
+                <div class="col ml-4">
+                    <span class="bp-author-stext">Written by:</span>
+                    <h3 class="mb-1">{{ $post->author->name }}</h3>
+                    <small>{{ $post->author->about }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
