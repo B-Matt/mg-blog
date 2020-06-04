@@ -11101,8 +11101,7 @@ a.text-dark:focus {
 --------------------------*/
 .content-section {
     position: relative;
-    margin-top: 94px;
-    height: 350px;
+    min-height: 350px;
 }
 
 /*------------------------

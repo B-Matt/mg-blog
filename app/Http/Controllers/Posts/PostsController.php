@@ -18,9 +18,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->get();
+        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->paginate(10);
 
-        return view('posts.index',  [
+        return view('posts.index', [
             'posts' => $blog_posts
         ]);
     }

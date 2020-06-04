@@ -7,7 +7,7 @@
             <img src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover" class="img-fluid" />
             <div class="bp-header-title">
                 <div class="col-md-5 mx-auto">
-                    <div class="bp-title pt-3 pb-3 text-center">
+                    <div role="button" class="bp-title pt-3 pb-3 text-center">
                         <h1 class="mb-0">{{$post->title}}</h1>
                         <h6 class="mb-0">
                             {{ $post->author->name }} &ndash;
