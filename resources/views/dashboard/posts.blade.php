@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-10 mx-auto">
+        <div class="col-lg-10 my-5 mx-auto">
             <!-- Accordion -->
             <div id="postsAccord" class="accordion shadow">
 
@@ -28,13 +28,16 @@
                     </div>
                     <div id="collapse{{ $loop->iteration }}" aria-labelledby="heading{{ $loop->iteration }}" data-parent="#postsAccord"
                         class="collapse">
-                        <div class="dash-body card-body p-5">                        
-                            <a href="{{ route('posts.show', $post->slug) }}">
-                                <i class="dash-icon flaticon-vision"></i>
-                            </a>
-                            <a href="#">
-                                <i class="dash-icon flaticon-pencil"></i>
-                            </a>
+                        <div class="dash-body card-body p-5">
+                            <small role="button" class="text-muted"><b>Published:</b> {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}</small>                  
+                            <div class="d-inline-flex float-right">
+                                <a href="{{ route('posts.show', $post->slug) }}" class="mr-3" title="View published version">
+                                    <i class="dash-icon flaticon-vision"></i>
+                                </a>
+                                <a href="#" title="Edit post">
+                                    <i class="dash-icon flaticon-pencil"></i>
+                                </a>
+                            </div>
                             <p class="font-weight-light m-0">
                                 {!! $post->body_html !!}
                             </p>
@@ -42,7 +45,7 @@
                     </div>
                 </div>
                 @endforeach
-
+                {{ $posts->links() }}
             </div>
         </div>
     </div>

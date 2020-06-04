@@ -11185,6 +11185,11 @@ a.text-dark:focus {
     transform: rotate(180deg);
 }
 
+#postsAccord .page-link {
+    background-color: transparent;
+    border: none;
+}
+
 /*------------------------
 	Blog Posts (Index)
 --------------------------*/

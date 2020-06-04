@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function posts() 
     {
-        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->get();
+        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->simplePaginate(10);
 
         return view('dashboard.posts',  [
             'posts' => $blog_posts
