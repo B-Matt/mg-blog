@@ -33,10 +33,10 @@
             <div class="responsive"><i class="flaticon-menu"></i></div>
             <nav>
                 <ul class="menu-list">
-                    <li class="active"><a href="https://themastergames.com/" title="Master Games Website">Home</a></li>
+                    <li><a href="https://themastergames.com/" title="Master Games Website">Home</a></li>
                     <li><a href="https://themastergames.com/products/index" title="Master Games Products">Products</a>
                     </li>
-                    <li><a href="https://blog.themastergames.com/posts" title="Master Games Blog">Blog</a></li>
+                    <li class="active"><a href="https://blog.themastergames.com/posts" title="Master Games Blog">Blog</a></li>
                 </ul>
             </nav>
         </header>

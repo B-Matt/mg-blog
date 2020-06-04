@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Posts;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('dashboard.index');
+    }
+
+    /**
+     * Show the application posts.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function posts() 
+    {
+        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->get();
+
+        return view('dashboard.posts',  [
+            'posts' => $blog_posts
+        ]);
     }
 }

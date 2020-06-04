@@ -13,14 +13,12 @@
                     Title
                 </label>
                 <input class="input" id="title" name="title" type="text">
-                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
             </div>
             <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
                 <label class="label" for="cover_img">
                     Cover Image
                 </label>
                 <input class="input" id="cover_img" name="cover_img" type="url">
-                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
             </div>
             <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                 <label class="label" for="online">

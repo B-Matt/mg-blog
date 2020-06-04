@@ -18,10 +18,13 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/home', 'HomeController@index')->name('home');
+
+// DASHBOARD
+Route::get('/dashboard',      'HomeController@index')->name('home');
+Route::get('/dashboard/posts','HomeController@posts')->name('dash.posts');
+Route::get('/dashboard/create','PostsController@create')->name('posts.create');
 
 // BLOG POSTS
-Route::get('/posts/create', 'PostsController@create')->name('posts.create');
 Route::post('/posts',       'PostsController@store')->name('posts.store');
 Route::get('/posts',        'PostsController@index')->name('posts.index');
 Route::get('/posts/{param}','PostsController@show')->name('posts.show');
