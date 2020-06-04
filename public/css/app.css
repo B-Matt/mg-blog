@@ -11190,6 +11190,21 @@ a.text-dark:focus {
 }
 
 /*------------------------
+	Blog Posts (Create)
+--------------------------*/
+.bp-create-form input,
+.bp-create-form select {
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #ced4da;
+}
+
+.bp-create-form .editor-toolbar,
+.bp-create-form .CodeMirror {
+    border-radius: 0;
+}
+
+/*------------------------
 	Blog Posts (Index)
 --------------------------*/
 .blog-posts {
