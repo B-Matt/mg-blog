@@ -48,9 +48,7 @@ class PostsController extends Controller
         ]);
 
         $author = Auth::user();
-        $post = new Posts;
-
-        
+        $post = new Posts;       
 
         $post->title = $request->title;
         $post->slug = Str::slug($post->title, '-');
@@ -87,21 +85,28 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $posts)
+    public function edit(Posts $post)
     {
-        //
+        return view('posts.create', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Posts  $posts
+     * @param  \App\Posts  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $posts)
+    public function update(Request $request, Posts $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'cover_img' => 'required',
+        ]);
+
+        $request->slug = Str::slug($request->title, '-');
+        $post->update($request);
+        return redirect()->route('dash.posts');
     }
 
     /**

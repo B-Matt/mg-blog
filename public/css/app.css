@@ -11110,18 +11110,21 @@ a.text-dark:focus {
 /*------------------------
 	Dashboard (Index)
 --------------------------*/
-.dash-nav {
-    z-index: 555;
-}
-
 .dash-sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
+    width: 260px;
     z-index: 1;
     padding: 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.dash-sidebar .navbar-brand {
+    color: rgba(0, 0, 0, 0.9);
+    padding: .85rem 1rem;
+    height: 55px;
 }
 
 .dash-sidebar-sticky {

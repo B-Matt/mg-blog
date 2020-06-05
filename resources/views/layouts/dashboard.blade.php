@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} Panel</title>
+    <title>{{ config('app.name', 'Laravel') }} Dashboard</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.slim.min.js') }}" defer></script>
@@ -26,9 +26,6 @@
     <div id="app">
         <nav class="navbar dash-nav navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }} Panel
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,8 +56,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -74,10 +71,12 @@
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
             <div class="row">
-                <nav class="col-md-1 d-none d-md-block bg-light dash-sidebar">
+                <nav class="col d-md-block bg-light dash-sidebar">
+                    <a class="navbar-brand navbar-light bg-white shadow-sm w-100 text-center" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
                     <div class="dash-sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -117,7 +116,7 @@
                         </ul>
                     </div>
                 </nav>
-                <main class="col-md-11 ml-sm-auto pt-4 px-5">
+                <main class="offset-md-2 col pr-5 pt-4">
                     @yield('content')
                 </main>
             </div>

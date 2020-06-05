@@ -37,7 +37,7 @@
                                 <a href="{{ route('posts.show', $post->slug) }}" class="mr-3" title="View published version">
                                     <i class="dash-icon flaticon-vision"></i>
                                 </a>
-                                <a href="#" title="Edit post">
+                                <a href="{{ route('posts.edit', $post) }}" title="Edit post">
                                     <i class="dash-icon flaticon-pencil"></i>
                                 </a>
                             </div>
