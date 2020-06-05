@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('notification')
+{!! \Session::get('notification') !!}
+@endsection
+
 @section('content')
 <div class="d-inline-flex mb-4">
     <h1>All Posts</h1>
@@ -20,26 +24,42 @@
                 @foreach ($posts as $post)
                 <div class="card">
                     <div id="heading{{ $loop->iteration }}" class="card-header bg-white shadow-sm border-0">
-                        <h6 class="mb-0 font-weight-bold">
-                            
+                        <h6 class="mb-0 font-weight-bold">                            
                             <a href="#" data-toggle="collapse" data-target="#collapse{{ $loop->iteration }}" aria-expanded="false"
                                 aria-controls="collapse{{ $loop->iteration }}"
                                 class="d-block position-relative text-dark text-uppercase collapsible-link py-2">
                                 {{ $post->title }}
+                                {!! $post->online == 0 ? '<span class="text-muted font-weight-light"> - HIDDEN</span>' : '' !!}
                             </a>
                         </h6>
                     </div>
                     <div id="collapse{{ $loop->iteration }}" aria-labelledby="heading{{ $loop->iteration }}" data-parent="#postsAccord"
                         class="collapse">
                         <div class="dash-body card-body p-5">
-                            <small role="button" class="text-muted"><b>Published:</b> {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}</small>                  
+                            <small role="button" class="text-muted">
+                                <i class="dash-icon flaticon-calendar mr-1"></i> 
+                                {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
+                            </small>                  
                             <div class="d-inline-flex float-right">
                                 <a href="{{ route('posts.show', $post->slug) }}" class="mr-3" title="View published version">
                                     <i class="dash-icon flaticon-vision"></i>
                                 </a>
-                                <a href="{{ route('posts.edit', $post) }}" title="Edit post">
+                                <a href="{{ route('posts.edit', $post) }}" class="mr-3" title="Edit post">
                                     <i class="dash-icon flaticon-pencil"></i>
                                 </a>
+                                <form method="post" action="{{ route('posts.destroy', $post) }}" class="mr-3">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-link p-0" title="Delete post">
+                                        <i class="dash-icon flaticon-trash-bin"></i>
+                                    </button>                                    
+                                </form>
+                                <form method="post" action="{{ route('posts.visibility', ['post' => $post]) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link p-0" title="Change visibility of post" name="visibility" value="{{ ($post->online == 0 ? '1' : '0') }}">
+                                        <i class="dash-icon {{ ($post->online == 0 ? 'flaticon-vision' : 'flaticon-vision-1') }}"></i>
+                                    </button>                                    
+                                </form>
                             </div>
                             <p class="font-weight-light m-0">
                                 {!! $post->body !!}

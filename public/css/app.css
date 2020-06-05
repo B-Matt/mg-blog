@@ -44,6 +44,8 @@
 .flaticon-search:before { content: "\f10a"; }
 .flaticon-calendar:before { content: "\f10b"; }
 .flaticon-vision:before { content: "\f10c"; }
+.flaticon-trash-bin:before { content: "\f10d"; }
+.flaticon-vision-1:before { content: "\f10e"; }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
@@ -11179,6 +11181,10 @@ a.text-dark:focus {
 .dash-body a:hover {
     color: lightblue;
     text-decoration: none;
+}
+
+.dash-body > small > i:before {
+    font-size: 13px;
 }
 
 .collapsible-link::before {

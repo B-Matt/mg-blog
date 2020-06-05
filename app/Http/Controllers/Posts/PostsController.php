@@ -17,11 +17,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $blog_posts = Posts::orderByDesc('created_at')->where('online', true)->paginate(10);
-
-        return view('posts.index', [
-            'posts' => $blog_posts
-        ]);
+        $posts = Posts::orderByDesc('created_at')->where('online', true)->paginate(10);
+        return view('posts.index', compact("posts"));
     }
 
     /**
@@ -70,8 +67,9 @@ class PostsController extends Controller
      */
     public function show($param)
     {
+        dd("SHOW");
         $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();
-        if($post->online) {
+        if($post->online || Auth::check()) {
             return view('posts.show', [
                 'post' => $post
             ]);
@@ -112,11 +110,25 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Posts  $posts
+     * @param  \App\Posts  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
+    public function destroy(Posts $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('dash.posts')->with('notification', 'Blog post titled "' . $post->title .  '" is deleted!');;
+    }
+
+    /**
+     * Toogles specified resource visibility.
+     * 
+     * @param  \App\Posts  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function visibility(Request $request, Posts $post)
+    {
+        $post->online = $request->visibility;
+        $post->save();        
+        return redirect()->route('dash.posts');
     }
 }
