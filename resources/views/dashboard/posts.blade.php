@@ -1,16 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<a href="{{ route('posts.create') }}">                           
-    <button class="btn btn-success float-right mr-5 d-inline-flex">
-        <i class="dash-icon flaticon-chat"></i>
-        <span class="m-1">New Post</span>
-    </button>
-</a>
+<div class="d-inline-flex mb-4">
+    <h1>All Posts</h1>
+    <a href="{{ route('posts.create') }}">                           
+        <button class="btn btn-success ml-3 d-inline-flex">
+            <i class="dash-icon flaticon-chat"></i>
+            <span class="m-1">New Post</span>
+        </button>
+    </a>
+</div>
 
-<div class="container">
+<div class="container-fluid mb-5">
     <div class="row">
-        <div class="col-lg-10 my-5 mx-auto">
+        <div class="col w-100">
             <!-- Accordion -->
             <div id="postsAccord" class="accordion shadow">
 

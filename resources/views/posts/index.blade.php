@@ -9,7 +9,7 @@
             @else
             <div class="normal-post col-md-4">
             @endif
-            <a href="{{route('posts.show', $post->slug)}}" class="post-link"></a>
+            <a href="{{ route('posts.show', $post->slug) }}" class="post-link"></a>
             <div class="card mx-auto">
                 @if($loop->iteration == 1)
                 <div class="row no-gutters">

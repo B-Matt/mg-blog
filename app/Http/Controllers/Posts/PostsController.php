@@ -46,6 +46,7 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required'
         ]);
+        dd($request);
 
         $author = Auth::user();
         $post = new Posts;
@@ -53,10 +54,10 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->slug = Str::slug($post->title, '-');
         $post->cover_img = $request->cover_img;
-        $post->body_md = $request->body;
-        $post->body_html = GitDown::parseAndCache($request->body);
-        $post->summary_md = $request->summary;
-        $post->summary_html = GitDown::parseAndCache($request->summary); 
+        //$post->body_md = $request->body;
+        $post->body_html = $request->body; //GitDown::parseAndCache($request->body);
+        //$post->summary_md = $request->summary;
+        $post->summary_html = $request->summary; //GitDown::parseAndCache($request->summary); 
         $post->online = $request->online;
         $post->author()->associate($author);
         $post->save();

@@ -347,6 +347,8 @@ button::-moz-focus-inner,
 [type=reset]::-moz-focus-inner,
 [type=submit]::-moz-focus-inner {
     padding: 0;
+    border: 0;
+    outline: none;
     border-style: none;
 }
 
@@ -5471,6 +5473,7 @@ a.badge-success:hover,
 a.badge-success:focus {
     color: #fff;
     background-color: #2d995b;
+    text-decoration: none;
 }
 
 a.badge-success:focus,
@@ -11138,6 +11141,29 @@ a.text-dark:focus {
     display: inline-flex;
 }
 
+.dash-sidebar .btn-link:hover {
+    text-decoration: none;
+}
+
+.dash-sidebar .dropdown-menu {
+    position: relative !important;
+    transform: none !important;
+    border: none !important;
+    background: transparent  !important;
+}
+
+.dash-sidebar .dropdown-item {
+    color: #3490dc;
+    -webkit-transition: all 0.25s ease 0s;
+    -o-transition: all 0.25s ease 0s;
+    transition: all 0.25s ease 0s;
+}
+
+.dash-sidebar .dropdown-item:hover {
+    color: #1d68a7;
+    padding-left: 30px;
+}
+
 /*------------------------
 	Dashboard (Posts)
 --------------------------*/
@@ -11199,9 +11225,24 @@ a.text-dark:focus {
     border-bottom: 2px solid #ced4da;
 }
 
-.bp-create-form .editor-toolbar,
-.bp-create-form .CodeMirror {
+.bp-create-form label {
+    font-size: 1.05em;
+    margin-bottom: 0px;
+    color: #6c757d;
+}
+
+.bp-create-form button {
     border-radius: 0;
+    text-transform: uppercase;
+}
+
+.bp-create-form .editor-toolbar,
+.bp-create-form .tox-tinymce {
+    border-radius: 0;
+}
+
+.bp-create-form .tox {
+    height: 350px !important;
 }
 
 /*------------------------

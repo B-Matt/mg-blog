@@ -10,7 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }} Panel</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery.slim.min.js') }}" defer></script>
+    <script src="{{ asset('/js/popper.min.js') }}"></script>    
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,16 +81,20 @@
                     <div class="dash-sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link active" href="{{ route('home') }}">
                                     <i class="dash-icon flaticon-browser"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dash.posts') }}">
+                            <li class="dropdown">
+                                <button type="button" class="btn btn-link dropdown-toggle w-100 text-left" data-toggle="dropdown">
                                     <i class="dash-icon flaticon-chat"></i>
                                     <span>Posts</span>
-                                </a>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('dash.posts') }}">All Posts</a>
+                                    <a class="dropdown-item" href="{{ route('posts.create') }}">Create Post</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
