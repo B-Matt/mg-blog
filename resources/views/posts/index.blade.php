@@ -36,7 +36,7 @@
                             </small>
                             <hr>
                             <span class="card-text text-justify">
-                                {!! $post->summary_html !!}
+                                {!! $post->summary !!}
                             </span>
                             @if($loop->iteration == 1)
                             <a href="{{route('posts.show', $post->slug)}}"

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use GitDown;
 
 use App\Posts;
 use Illuminate\Http\Request;
@@ -44,25 +43,25 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'cover_img' => 'required',
         ]);
-        dd($request);
 
         $author = Auth::user();
         $post = new Posts;
 
+        
+
         $post->title = $request->title;
         $post->slug = Str::slug($post->title, '-');
         $post->cover_img = $request->cover_img;
-        //$post->body_md = $request->body;
-        $post->body_html = $request->body; //GitDown::parseAndCache($request->body);
-        //$post->summary_md = $request->summary;
-        $post->summary_html = $request->summary; //GitDown::parseAndCache($request->summary); 
+        $post->body = str_replace("background-color: #ffffff;", "", $request->body);
+        $post->summary = str_replace("background-color: #ffffff;", "", $request->summary);
         $post->online = $request->online;
         $post->author()->associate($author);
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('dash.posts');
     }
 
     /**

@@ -14,14 +14,13 @@
                 </div>
                 <div class="form-group">
                     <label for="coverImage">Cover Image</label>
-                    <input type="url" class="form-control" id="coverImage" name="cover_img"
-                        placeholder="http://imgur.com/" />
+                    <input type="url" class="form-control" id="coverImage" name="cover_img" placeholder="http://imgur.com/" required/>
                 </div>
                 <div class="form-group">
                     <label for="isOnline">Online?</label>
-                    <select class="form-control" id="isOnline">
-                        <option>Yes</option>
-                        <option>No</option>
+                    <select class="form-control" id="isOnline" name="online">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
                     </select>
                 </div>
                 <div class="form-group mt-4">
@@ -45,19 +44,47 @@
 <script src="{{ asset('/js/tinymce.min.js') }}"></script>
 
 <script>
-    // Initialise editors
-    tinymce.init({
-        selector: '#articleText',
-        skin: 'bootstrap',
-        plugins: 'lists, link, image, media',
-        toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help'
-    });
+function onArticleTextChange(currentEditor) {
+    
+    tinymce.get('articleSummary').setContent(currentEditor.getContent().split("\n")[0]);
+}
 
-    tinymce.init({
-        selector: '#articleSummary',
-        skin: 'bootstrap',
-        plugins: 'lists, link, image, media',
-        toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help'
-    });
+// Initialise editors
+tinymce.init({
+    selector: '#articleText',
+    skin: 'bootstrap',
+    plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen autosave',
+        'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar: 'undo redo restoredraft | formatselect fontselect | ' +
+        'bold italic backcolor | alignleft aligncenter alignright alignjustify' +
+        '| link image media ' +
+        '| bullist numlist outdent indent | removeformat',
+    autosave_restore_when_empty: true,
+    autosave_retention: "60m",
+    setup: (ed) => {
+        ed.on("input propertychange", () => {
+            onArticleTextChange(ed);
+        })
+    }
+});
+
+tinymce.init({
+    selector: '#articleSummary',
+    skin: 'bootstrap',
+    plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen autosave',
+        'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar: 'undo redo restoredraft | formatselect fontselect | ' +
+        'bold italic backcolor | alignleft aligncenter alignright alignjustify' +
+        '| link image media ' +
+        '| bullist numlist outdent indent | removeformat',
+    autosave_restore_when_empty: true,
+    autosave_retention: "60m"
+});
 </script>
 @endsection

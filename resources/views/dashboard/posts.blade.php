@@ -42,7 +42,7 @@
                                 </a>
                             </div>
                             <p class="font-weight-light m-0">
-                                {!! $post->body_html !!}
+                                {!! $post->body !!}
                             </p>
                         </div>
                     </div>

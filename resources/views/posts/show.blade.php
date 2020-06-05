@@ -24,7 +24,7 @@
     <div class="row">
         <article class="col-md-6 offset-3">
             <div class="bp-body">
-                {!! $post->body_html !!}
+                {!! $post->body !!}
             </div>
         </article>
         <div class="col-md-3">
