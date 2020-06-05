@@ -36,10 +36,14 @@
                     <div id="collapse{{ $loop->iteration }}" aria-labelledby="heading{{ $loop->iteration }}" data-parent="#postsAccord"
                         class="collapse">
                         <div class="dash-body card-body p-5">
+                            {!! $post->online == 0 ? '<strong class="text-danger">This post is hidden!</strong><br>' : '' !!}
                             <small role="button" class="text-muted">
-                                <i class="dash-icon flaticon-calendar mr-1"></i> 
+                                <i class="dash-icon flaticon-user mr-1"></i> 
+                                {{ $post->author->name }}
+
+                                <i class="dash-icon flaticon-calendar ml-2 mr-1"></i> 
                                 {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
-                            </small>                  
+                            </small>                            
                             <div class="d-inline-flex float-right">
                                 <a href="{{ route('posts.show', $post->slug) }}" class="mr-3" title="View published version">
                                     <i class="dash-icon flaticon-vision"></i>
@@ -61,7 +65,7 @@
                                     </button>                                    
                                 </form>
                             </div>
-                            <p class="font-weight-light m-0">
+                            <p class="m-0 mt-4">
                                 {!! $post->body !!}
                             </p>
                         </div>

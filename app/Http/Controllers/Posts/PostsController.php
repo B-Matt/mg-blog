@@ -40,7 +40,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:posts|max:255',
             'cover_img' => 'required',
         ]);
 
@@ -67,7 +67,6 @@ class PostsController extends Controller
      */
     public function show($param)
     {
-        dd("SHOW");
         $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();
         if($post->online || Auth::check()) {
             return view('posts.show', [
@@ -116,7 +115,7 @@ class PostsController extends Controller
     public function destroy(Posts $post)
     {
         $post->delete();
-        return redirect()->route('dash.posts')->with('notification', 'Blog post titled "' . $post->title .  '" is deleted!');;
+        return redirect()->route('dash.posts')->with('notification', 'Blog post titled <strong>' . $post->title .  '</strong> is deleted!');;
     }
 
     /**

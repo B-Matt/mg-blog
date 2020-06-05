@@ -19,11 +19,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// DASHBOARD
-Route::get('/dashboard',                'HomeController@index')->name('home');
+Route::get('/dashboard',                'HomeController@index')->name('dash.index');
 Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts');
 Route::get('/dashboard/create',         'PostsController@create')->name('posts.create');
+Route::get('/dashboard/users',          'UserController@index')->name('users.index');
 
-// BLOG POSTS
 Route::post('posts/visibility/{post?}', 'PostsController@visibility')->name('posts.visibility');
 Route::resource('posts',                'PostsController');
+Route::resource('users',                'UserController');

@@ -85,7 +85,7 @@
                     <div class="dash-sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('home') }}">
+                                <a class="nav-link active" href="{{ route('dash.index') }}">
                                     <i class="dash-icon flaticon-browser"></i>
                                     <span>Dashboard</span>
                                 </a>
@@ -101,11 +101,16 @@
                                     <a class="dropdown-item" href="{{ route('posts.create') }}">Create Post</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li class="dropdown">
+                                <button type="button" class="btn btn-link dropdown-toggle w-100 text-left"
+                                    data-toggle="dropdown">
                                     <i class="dash-icon flaticon-user"></i>
                                     <span>Users</span>
-                                </a>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">All Users</a>
+                                    <a class="dropdown-item" href="{{ route('users.create') }}">Create User</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
