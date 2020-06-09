@@ -14,16 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // AUTHORIZATION
-Auth::routes();
-Route::get('/', function () {
-    return view('auth.login');
-});
+//Auth::routes();
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('/',                         'PostsController@index');
 Route::get('/dashboard',                'HomeController@index')->name('dash.index');
 Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts');
-Route::get('/dashboard/create',         'PostsController@create')->name('posts.create');
-Route::get('/dashboard/users',          'UserController@index')->name('users.index');
-
-Route::post('posts/visibility/{post?}', 'PostsController@visibility')->name('posts.visibility');
+Route::get('/dashboard/create',         'PostsController@create')->name('dash.create');
+Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility');
 Route::resource('posts',                'PostsController');
-Route::resource('users',                'UserController');
+
+Route::prefix('dashboard')->group(function () {
+    Route::resource('users',                'UserController');
+    Route::resource('roles',                'RolesController');
+});

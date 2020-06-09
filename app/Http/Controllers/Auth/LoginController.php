@@ -56,7 +56,7 @@ class LoginController extends Controller
   
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            return redirect()->route('home');
+            return redirect()->route('dash.index');
         }
         else
         {

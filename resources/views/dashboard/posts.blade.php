@@ -56,7 +56,7 @@
                                     @method('delete')
                                     <button type="submit" class="btn btn-link p-0" title="Delete post">
                                         <i class="dash-icon flaticon-trash-bin"></i>
-                                    </button>                                    
+                                    </button>
                                 </form>
                                 <form method="post" action="{{ route('posts.visibility', ['post' => $post]) }}">
                                     @csrf

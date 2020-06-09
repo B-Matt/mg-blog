@@ -10,7 +10,7 @@
             <form class="bp-create-form p-4" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
         @else
             <form class="bp-create-form p-4" action="{{ route('posts.update', $post ?? '') }}" method="POST" enctype="multipart/form-data">
-        @endif        
+        @endif
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>

@@ -98,7 +98,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('dash.posts') }}">All Posts</a>
-                                    <a class="dropdown-item" href="{{ route('posts.create') }}">Create Post</a>
+                                    <a class="dropdown-item" href="{{ route('dash.create') }}">Create Post</a>
                                 </div>
                             </li>
                             <li class="dropdown">
@@ -110,6 +110,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('users.index') }}">All Users</a>
                                     <a class="dropdown-item" href="{{ route('users.create') }}">Create User</a>
+                                    <a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a>
                                 </div>
                             </li>
                             <li class="nav-item">

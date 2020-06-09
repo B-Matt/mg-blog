@@ -14,7 +14,7 @@
                 @if($loop->iteration == 1)
                 <div class="row no-gutters">
                     <div class="col-md-7">
-                        <img class="card-img" src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover">
+                        <img class="card-img h-100" src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover">
                         @else
                         <img class="card-img-top" src="{{ $post->cover_img }}" alt="{{ $post->title }} Cover">
                         @endif
