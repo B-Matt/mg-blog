@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Roles;
+use App\Settings;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Roles::get();
-        return view('dashboard.roles', compact('roles'));
+        $settings = Settings::find(1);
+        return view('dashboard.settings.index', compact('settings'));
     }
 
     /**
@@ -25,6 +25,7 @@ class RolesController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -35,65 +36,65 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Roles  $roles
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function show(Roles $roles)
+    public function show(Settings $settings)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Roles  $roles
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function edit(Roles $roles)
+    public function edit(Settings $settings)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Roles  $roles
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $request['read'] = (int)$request['read'] ?? 0;
-        $request['write'] = (int)$request['write'] ?? 0;
-        $request['delete'] = (int)$request['delete'] ?? 0;
-        $request['modify'] = (int)$request['modify'] ?? 0;
-        $request['users'] = (int)$request['users'] ?? 0;
-        $request['admin'] = (int)$request['admin'] ?? 0;
+        $request->validate([
+            'title' => 'required|string|max:60',
+            'short_title' => 'required|string|max:32',
+            'description' => 'required|string|max:160',
+        ]);
 
-        dd($request);
+        $settings = Settings::find($id);
+        $settings->title = $request->title;
+        $settings->short_title = $request->short_title;
+        $settings->description = $request->description;
+        $settings->icon_fav = $request->icon_fav;
+        $settings->icon_apple = $request->icon_apple;
+        $settings->theme_color = $request->theme_color;
+        $settings->save();
 
-        $role = Roles::find($id);
-        $role->perm_read = $request->read;
-        $role->perm_write = $request->write;
-        $role->perm_delete = $request->delete;
-        $role->perm_update = $request->modify;
-        $role->perm_users = $request->users;
-        $role->perm_su = $request->admin;
-        dd($role);
-        $role->save();
-        return redirect()->route('roles.index');
+        return redirect()->route('settings.index')->with('notification', 'General settings are updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Roles  $roles
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Roles $roles)
+    public function destroy(Settings $settings)
     {
         //
     }

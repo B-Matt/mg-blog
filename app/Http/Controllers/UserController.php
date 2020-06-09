@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Settings;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderByDesc('created_at')->paginate(10);
-        return view('dashboard.users.index', compact('users'));
+        $settings = Settings::find(1);
+        return view('dashboard.users.index', compact('users', 'settings'));
     }
 
     /**
@@ -26,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.create');
+        $settings = Settings::find(1);
+        return view('dashboard.users.create', compact('settings'));
     }
 
     /**
@@ -75,7 +78,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dashboard.users.create', compact('user'));
+        $settings = Settings::find(1);
+        return view('dashboard.users.create', compact('user', 'settings'));
     }
 
     /**
@@ -88,7 +92,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('notification', 'User <strong>' . $user->name .  '</strong> is updated!');
     }
 
     /**

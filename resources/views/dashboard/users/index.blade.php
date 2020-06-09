@@ -49,9 +49,6 @@
                                     <strong>E-Mail:</strong> {{ $user->email }}
                                 </div>
                                 <div class="form-group mt-2 mb-0">
-                                    <strong>Roles:</strong> {{ $user->roles }}
-                                </div>
-                                <div class="form-group mt-2 mb-0">
                                     <strong>About:</strong> {!! $user->about !!}
                                 </div>
                             </span>

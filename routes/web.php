@@ -23,9 +23,10 @@ Route::get('/dashboard',                'HomeController@index')->name('dash.inde
 Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts');
 Route::get('/dashboard/create',         'PostsController@create')->name('dash.create');
 Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility');
+
 Route::resource('posts',                'PostsController');
 
 Route::prefix('dashboard')->group(function () {
+    Route::resource('settings',             'SettingsController');
     Route::resource('users',                'UserController');
-    Route::resource('roles',                'RolesController');
 });

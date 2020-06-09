@@ -2,24 +2,39 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- START General Info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ URL::current() }}" />
+    <link rel="alternate" href="{{ URL::current() }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
 
-    <!-- CSRF Token -->
+    <title>{!! isset($post) == true ? ($post->title . ' &bull;') : '' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
+    <meta name="description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="theme-color" content="{{ isset($settings) == true ? $settings->theme_color : '' }}" />
+    <link rel="shortcut icon" href="{{ isset($settings) == true ? $settings->icon_fav : '' }}" />
+    <link rel="apple-touch-icon" href="{{ isset($settings) == true ? $settings->icon_apple : '' }}" />
+    <meta name="robots" content="index, follow">
+    <!-- END General Info -->
+
+    <!-- START CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- END CSRF Token -->
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
+    <!-- START Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- END Scripts -->
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <!-- START Fonts -->
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <!-- END Fonts -->
 
-    <!-- Styles -->
+    <!-- START Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- END Styles -->
 </head>
 
 <body>

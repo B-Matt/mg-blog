@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} Dashboard</title>
+    <title>{{ isset($settings) == true ? $settings->title : '' }} Dashboard</title>
+    <meta name="description" content="{{ isset($settings) == true ? $settings->description : '' }}"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.slim.min.js') }}" defer></script>
@@ -17,7 +18,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
@@ -80,7 +81,7 @@
             <div class="row">
                 <nav class="col d-md-block bg-light dash-sidebar">
                     <a class="navbar-brand navbar-light bg-white shadow-sm w-100 text-center" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ $settings->title }}
                     </a>
                     <div class="dash-sidebar-sticky">
                         <ul class="nav flex-column">
@@ -110,20 +111,19 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('users.index') }}">All Users</a>
                                     <a class="dropdown-item" href="{{ route('users.create') }}">Create User</a>
-                                    <a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li class="dropdown">
+                                <button type="button" class="btn btn-link dropdown-toggle w-100 text-left"
+                                    data-toggle="dropdown">
                                     <i class="dash-icon flaticon-settings"></i>
                                     <span>Settings</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="dash-icon flaticon-search"></i>
-                                    <span>SEO</span>
-                                </a>
+                                </button>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ route('settings.index') }}">General</a>
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">SEO</a>
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">Ads</a>
+                                </div>
                             </li>
                         </ul>
                     </div>

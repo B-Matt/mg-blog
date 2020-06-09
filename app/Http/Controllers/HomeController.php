@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Posts;
 use App\User;
+use App\Settings;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $settings = Settings::find(1);
+        return view('dashboard.index', compact('settings'));
     }
 
     /**
@@ -35,10 +37,8 @@ class HomeController extends Controller
      */
     public function posts() 
     {
-        $blog_posts = Posts::orderByDesc('created_at')->simplePaginate(10);
-
-        return view('dashboard.posts',  [
-            'posts' => $blog_posts
-        ]);
+        $posts = Posts::orderByDesc('created_at')->simplePaginate(10);
+        $settings = Settings::find(1);
+        return view('dashboard.posts',  compact('posts', 'settings'));
     }
 }

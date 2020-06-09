@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 
 use App\Posts;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Posts::orderByDesc('created_at')->where('online', true)->paginate(10);
-        return view('posts.index', compact("posts"));
+        $settings = Settings::find(1);
+        return view('posts.index', compact('posts', 'settings'));
     }
 
     /**
@@ -28,7 +30,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $settings = Settings::find(1);
+        return view('posts.create', 'settings');
     }
 
     /**
@@ -69,9 +72,8 @@ class PostsController extends Controller
     {
         $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();
         if($post->online || Auth::check()) {
-            return view('posts.show', [
-                'post' => $post
-            ]);
+            $settings = Settings::find(1);
+            return view('posts.show', compact('post', 'settings'));
         }
         return redirect()->route('posts.index');
     }
@@ -84,7 +86,8 @@ class PostsController extends Controller
      */
     public function edit(Posts $post)
     {
-        return view('posts.create', compact('post'));
+        $settings = Settings::find(1);
+        return view('posts.create', compact('post', 'settings'));
     }
 
     /**
