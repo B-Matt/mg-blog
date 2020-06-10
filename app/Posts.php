@@ -22,4 +22,11 @@ class Posts extends Model
     public function author() {
         return $this->belongsTo('App\User', 'author_id');
     }
+
+    /**
+     * The method retuns created_at time formated with ISO 8601.
+     */
+    public function create_time() {
+        return $this->created_at->format('c');
+    }
 }

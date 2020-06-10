@@ -31,7 +31,7 @@ class PostsController extends Controller
     public function create()
     {
         $settings = Settings::find(1);
-        return view('posts.create', 'settings');
+        return view('posts.create', compact('settings'));
     }
 
     /**

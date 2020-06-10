@@ -83,6 +83,8 @@ class SettingsController extends Controller
         $settings->icon_fav = $request->icon_fav;
         $settings->icon_apple = $request->icon_apple;
         $settings->theme_color = $request->theme_color;
+        $settings->profile_facebook = $request->profile_facebook;
+        $settings->profile_twitter = $request->profile_twitter;
         $settings->save();
 
         return redirect()->route('settings.index')->with('notification', 'General settings are updated!');

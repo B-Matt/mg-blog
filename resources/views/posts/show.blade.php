@@ -19,7 +19,6 @@
         </div>
     </div>
 </div>
-
 <div class="container-fluid py-5">
     <div class="row">
         <article class="col-md-6 offset-3">

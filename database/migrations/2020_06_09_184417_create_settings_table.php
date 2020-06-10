@@ -21,6 +21,8 @@ class CreateSettingsTable extends Migration
             $table->string('icon_fav')->nullable();
             $table->string('icon_apple')->nullable();
             $table->string('theme_color');
+            $table->string('profile_facebook')->nullable();
+            $table->string('profile_twitter')->nullable();
             $table->timestamps();
         });
 
@@ -31,7 +33,9 @@ class CreateSettingsTable extends Migration
                 'description' => 'Lorem ipsum anet...',
                 'icon_fav' => '',
                 'icon_apple' => '',
-                'theme_color' => '#e6f0fc'
+                'theme_color' => '#e6f0fc',
+                'profile_facebook' => '',
+                'profile_twitter' => ''
             )
         );
     }
