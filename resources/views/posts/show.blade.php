@@ -10,12 +10,11 @@
 <meta property="og:image" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
 <meta property="og:image:secure_url" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
 <meta property="article:publisher" content="https://www.facebook.com/{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
-<meta property="article:tag" content="ecommerce agency" />
-<meta property="article:tag" content="ecommerce consulting" />
-<meta property="article:tag" content="ecommerce development" />
-<meta property="article:tag" content="eCommerce project" />
-<meta property="article:tag" content="starting ecommerce project" />
-<meta property="article:section" content="eCommerce Talk" />
+<meta property="article:tag" content="ecommerce agency" /> <!-- Ovdje dodati tagove iz settingsa -->
+@foreach($post->tags as $tag)
+<meta property="article:tag" content="{{ $tag->slug }}" />
+@endforeach
+<meta property="article:section" content="eCommerce Talk" /> <!-- Ovdje staviti kategoriju -->
 <meta property="article:published_time" content="{{ isset($post) == true ? $post->create_time() : '' }}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:description" content="{{ isset($post) == true ? $post->summary : '' }}" /> <!-- Zbugan summary moram nekako maknuti html formating -->
