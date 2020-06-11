@@ -27,6 +27,20 @@
                         <option value="0" {{ (isset($post) == true && $post->online == 0) ? 'selected' : '' }}>No</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="postTags">Post Tags</label>
+                    <select class="form-control bp-select" id="postTags" name="tags[]" multiple="multiple">
+                    @foreach($tags as $tag)
+                        @if(isset($post_tags) == true)
+                            @foreach($post_tags as $ptag)
+                                <option {{ ($ptag->name == $tag->name) ? ('selected="selected"') : '' }}>{{ $tag->name }}</option>
+                            @endforeach
+                        @else
+                            <option>{{ $tag->name }}</option>
+                        @endif                        
+                    @endforeach
+                    </select>
+                </div>
                 <div class="form-group mt-4">
                     <label for="articleSummary">Article Summary</label>
                     <textarea class="form-control" id="articleSummary" name="summary">{{ isset($post) == true ? $post->summary : old('summary') }}</textarea>
@@ -45,7 +59,20 @@
     </div>
 </div>
 
+<script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>
+
 <script src="{{ asset('/js/tinymce.min.js') }}"></script>
+
+<script>
+$(document).ready(() => {
+    $(".bp-select").select2({
+        tags: true
+    });
+});
+</script>
 
 <script>
 function onArticleTextChange(currentEditor) {

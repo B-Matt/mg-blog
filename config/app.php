@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Conner\Tagging\Providers\TaggingServiceProvider::class,
 
         /*
          * Application Service Providers...

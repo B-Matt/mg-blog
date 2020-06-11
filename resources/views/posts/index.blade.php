@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('social-meta')
+@endsection
+
+@section('json-ld')
+@endsection
+
 @section('content')
 <div class="container-fluid my-5">
     <div class="blog-posts row">

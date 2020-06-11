@@ -11506,6 +11506,13 @@ a.text-dark:focus {
     color: white;
     margin-right: 15px;
 }
+.bp-tags li a {
+    color: white;
+}
+
+.bp-tags li a:hover {
+    text-decoration: none;
+}
 
 /*------------------------
 	Footer section

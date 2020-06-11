@@ -31,7 +31,8 @@ class PostsController extends Controller
     public function create()
     {
         $settings = Settings::find(1);
-        return view('posts.create', compact('settings'));
+        $tags = Posts::existingTags();
+        return view('posts.create', compact('settings', 'tags'));
     }
 
     /**
@@ -57,7 +58,9 @@ class PostsController extends Controller
         $post->summary = str_replace("background-color: #ffffff;", "", $request->summary);
         $post->online = $request->online;
         $post->author()->associate($author);
+        
         $post->save();
+        $post->tag($request->tags);
 
         return redirect()->route('dash.posts');
     }
@@ -84,10 +87,12 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $post)
+    public function edit(Posts $post) // Ne radi EDIT!
     {
         $settings = Settings::find(1);
-        return view('posts.create', compact('post', 'settings'));
+        $tags = Posts::existingTags();
+        $post_tags = $post->tags;
+        return view('posts.create', compact('post', 'settings', 'tags', 'post_tags'));
     }
 
     /**
@@ -106,7 +111,21 @@ class PostsController extends Controller
 
         $request->slug = Str::slug($request->title, '-');
         $post->update($request);
+        $post->retag($request->tags);
         return redirect()->route('dash.posts');
+    }
+
+    /**
+     * Shows all posts tagged with certain tag.
+     * 
+     * @param String $tag
+     * @return \Illuminate\Http\Response
+     */
+    public function tagged($tag) {
+
+        $posts = Posts::withAnyTag($tag)->paginate(10);
+        $settings = Settings::find(1);
+        return view('posts.index', compact('posts', 'settings'));
     }
 
     /**

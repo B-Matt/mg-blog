@@ -19,32 +19,11 @@
     <!-- END General Info -->
 
     <!-- START Social Graphs -->
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="{{ isset($post) == true ? $post->title : config('app.name', 'Laravel') }}" />
-    <meta property="og:site_name" content="{{ isset($settings) == true ? $settings->title : config('app.name', 'Laravel') }}" />
-    <meta property="og:url" content="{{ URL::current() }}" />
-    <meta property="og:description" content="{{ isset($post) == true ? $post->summary : '' }}" /> <!-- Zbugan summary moram nekako maknuti html formating -->
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
-    <meta property="og:image:secure_url" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
-    <meta property="article:publisher" content="https://www.facebook.com/{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
-    <meta property="article:tag" content="ecommerce agency" />
-    <meta property="article:tag" content="ecommerce consulting" />
-    <meta property="article:tag" content="ecommerce development" />
-    <meta property="article:tag" content="eCommerce project" />
-    <meta property="article:tag" content="starting ecommerce project" />
-    <meta property="article:section" content="eCommerce Talk" />
-    <meta property="article:published_time" content="{{ isset($post) == true ? $post->create_time() : '' }}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="{{ isset($post) == true ? $post->summary : '' }}" /> <!-- Zbugan summary moram nekako maknuti html formating -->
-    <meta name="twitter:title" content="{{ isset($post) == true ? $post->title : config('app.name', 'Laravel') }}" />
-    <meta name="twitter:site" content="@{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
-    <meta name="twitter:image" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
-    <meta name="twitter:creator" content="@{{ isset($user) == true ? $post->cover_img : '' }}" />
+    @yield('social-meta')
     <!-- END Social Graphs -->
 
     <!-- START JSON-LD -->
-    {{ Breadcrumbs::view('breadcrumbs::json-ld', 'post', $post) }}
+    @yield('json-ld')
     <!-- END JSON-LD -->
 
     <!-- START CSRF Token -->
