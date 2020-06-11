@@ -11254,6 +11254,31 @@ a.text-dark:focus {
     height: 350px !important;
 }
 
+.select2-container--default .select2-selection--multiple {
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 2px solid #ced4da !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: var(--primary) !important;
+    color: white !important;
+    padding: 3px !important;
+}
+
+.select2-selection__choice__remove {
+    color: white !important;
+    font-size: 1.2em !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.select2-selection__choice__remove:hover {
+    background: transparent !important;
+}
+
 /*------------------------
 	Blog Posts (Index)
 --------------------------*/
