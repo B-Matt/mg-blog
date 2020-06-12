@@ -167,6 +167,7 @@ return [
          */
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
+        Rinvex\Categories\Providers\CategoriesServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -11225,6 +11225,23 @@ a.text-dark:focus {
 }
 
 /*------------------------
+	Dashboard (Categories)
+--------------------------*/
+.dash-category-table {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.dash-category-actions-static {
+    display: inline-flex;
+}
+
+/*------------------------
 	Blog Posts (Create)
 --------------------------*/
 .bp-create-form input,

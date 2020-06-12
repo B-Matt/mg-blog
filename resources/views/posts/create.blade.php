@@ -10,6 +10,7 @@
             <form class="bp-create-form p-4" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
         @else
             <form class="bp-create-form p-4" action="{{ route('posts.update', $post ?? '') }}" method="POST" enctype="multipart/form-data">
+            @method('PATCH')
         @endif
                 @csrf
                 <div class="form-group">
@@ -32,12 +33,30 @@
                     <select class="form-control bp-select" id="postTags" name="tags[]" multiple="multiple">
                     @foreach($tags as $tag)
                         @if(isset($post_tags) == true)
-                            @foreach($post_tags as $ptag)
-                                <option {{ ($ptag->name == $tag->name) ? ('selected="selected"') : '' }}>{{ $tag->name }}</option>
-                            @endforeach
+                            @if(in_array($tag->name, $post_tags))
+                                <option selected="selected">{{ $tag->name }}</option>
+                            @else
+                                <option>{{ $tag->name }}</option>
+                            @endif
                         @else
                             <option>{{ $tag->name }}</option>
                         @endif                        
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postCategory">Post Category</label>
+                    <select class="form-control" id="postCategory" name="category" required>
+                    @foreach($categories as $category)
+                        @if(isset($post_category) == true)
+                            @if($category->slug == $post_category[0]["slug"])
+                                <option value="{{ $category->slug }}" selected="selected">{{ $category->name }}</option>
+                            @else
+                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                            @endif
+                        @else
+                            <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                        @endif                         
                     @endforeach
                     </select>
                 </div>
@@ -69,7 +88,8 @@
 <script>
 $(document).ready(() => {
     $(".bp-select").select2({
-        tags: true
+        tags: true,
+        tokenSeparators: [',', ' ']
     });
 });
 </script>

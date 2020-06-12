@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
     use \Conner\Tagging\Taggable;
+    use \Rinvex\Categories\Traits\Categorizable;
     
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,6 @@ class Posts extends Model
 
     /**
      * The method that have relationship with another table in DB.
-     * 
      */
     public function author() {
         return $this->belongsTo('App\User', 'author_id');

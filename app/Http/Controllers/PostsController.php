@@ -6,6 +6,7 @@ use Auth;
 
 use App\Posts;
 use App\Settings;
+use Rinvex\Categories\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -32,7 +33,8 @@ class PostsController extends Controller
     {
         $settings = Settings::find(1);
         $tags = Posts::existingTags();
-        return view('posts.create', compact('settings', 'tags'));
+        $categories = Category::get();
+        return view('posts.create', compact('settings', 'tags', 'categories'));
     }
 
     /**
@@ -61,6 +63,7 @@ class PostsController extends Controller
         
         $post->save();
         $post->tag($request->tags);
+        $post->attachCategories([$request->category]);
 
         return redirect()->route('dash.posts');
     }
@@ -74,7 +77,9 @@ class PostsController extends Controller
     public function show($param)
     {
         $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();
-        if($post->online || Auth::check()) {
+        
+        if($post->online || Auth::check())
+        {
             $settings = Settings::find(1);
             return view('posts.show', compact('post', 'settings'));
         }
@@ -91,8 +96,16 @@ class PostsController extends Controller
     {
         $settings = Settings::find(1);
         $tags = Posts::existingTags();
-        $post_tags = $post->tags;
-        return view('posts.create', compact('post', 'settings', 'tags', 'post_tags'));
+        $post_tags = [];
+        foreach($post->tags as $tag) 
+        {
+            $post_tags[] = $tag->name;
+        }
+
+        $categories = Category::get();
+        $post_category = $post->categories->toArray();
+        
+        return view('posts.create', compact('post', 'settings', 'tags', 'post_tags', 'categories', 'post_category'));
     }
 
     /**
@@ -109,9 +122,13 @@ class PostsController extends Controller
             'cover_img' => 'required',
         ]);
 
-        $request->slug = Str::slug($request->title, '-');
-        $post->update($request);
+        $data = $request->except(['tags']);
+        $data["slug"] = Str::slug($request->title, '-');
+
+        $post->update($data);
         $post->retag($request->tags);
+        $post->syncCategories([$request->category], true);
+
         return redirect()->route('dash.posts');
     }
 
@@ -137,7 +154,7 @@ class PostsController extends Controller
     public function destroy(Posts $post)
     {
         $post->delete();
-        return redirect()->route('dash.posts')->with('notification', 'Blog post titled <strong>' . $post->title .  '</strong> is deleted!');;
+        return redirect()->route('dash.posts')->with('notification', 'Blog post titled <strong>' . $post->title .  '</strong> is deleted!');
     }
 
     /**

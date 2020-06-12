@@ -112,6 +112,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('dash.posts') }}">All Posts</a>
                                     <a class="dropdown-item" href="{{ route('dash.create') }}">Create Post</a>
+                                    <a class="dropdown-item" href="{{ route('categories.index') }}">Categories</a>
                                 </div>
                             </li>
                             <li class="dropdown">
@@ -133,7 +134,6 @@
                                 </button>
                                 <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('settings.index') }}">General</a>
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">SEO</a>
                                     <a class="dropdown-item" href="{{ route('users.index') }}">Ads</a>
                                 </div>
                             </li>
@@ -141,14 +141,16 @@
                     </div>
                 </nav>
                 <main class="offset-md-2 col pr-5 pt-4">
-                    @hasSection('notification')
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        @yield('notification')
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif                    
+                    <div id="notifications">
+                        @hasSection('notification')
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            @yield('notification')
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                    </div>            
                     @yield('content')
                 </main>
             </div>

@@ -41,4 +41,12 @@ class HomeController extends Controller
         $settings = Settings::find(1);
         return view('dashboard.posts',  compact('posts', 'settings'));
     }
+
+    /**
+     * 
+     */
+    public function category_create(Request $request) 
+    {
+        dd($request);
+    }
 }

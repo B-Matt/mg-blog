@@ -18,9 +18,9 @@ class CreatePostsTable extends Migration
             $table->foreignId('author_id');
             $table->string('title');
             $table->string('slug')->index();
-            $table->string('cover_img')->nullable();
-            $table->text('body');
-            $table->text('summary');
+            $table->string('cover_img');
+            $table->text('body')->nullable();
+            $table->text('summary')->nullable();
             $table->char('online', 1);
             $table->timestamps();
         });

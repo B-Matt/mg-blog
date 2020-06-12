@@ -15,30 +15,31 @@ use Illuminate\Support\Facades\Route;
 
 // AUTHORIZATION
 Route::get('login', [
-'as' => 'login',
-'uses' => 'Auth\LoginController@showLoginForm'
+    'as' => 'login',
+    'uses' => 'Auth\LoginController@showLoginForm'
 ]);
 Route::post('login', [
-'as' => '',
-'uses' => 'Auth\LoginController@login'
+    'as' => '',
+    'uses' => 'Auth\LoginController@login'
 ]);
 Route::post('logout', [
-'as' => 'logout',
-'uses' => 'Auth\LoginController@logout'
+    'as' => 'logout',
+    'uses' => 'Auth\LoginController@logout'
 ]);
-//Auth::routes();
 
 // APP
 Route::any('/',                         'PostsController@index')->name('index');
 Route::get('/dashboard',                'HomeController@index')->name('dash.index');
 Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts');
 Route::get('/dashboard/create',         'PostsController@create')->name('dash.create');
+
 Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility');
-Route::get('/posts/tag/{tag?}',      'PostsController@tagged')->name('posts.tagged');
+Route::get('/posts/tag/{tag?}',         'PostsController@tagged')->name('posts.tagged');
 
 Route::resource('posts',                'PostsController');
 
 Route::prefix('dashboard')->group(function () {
-    Route::resource('settings',             'SettingsController');
-    Route::resource('users',                'UserController');
+    Route::resource('categories',       'CategoriesController');
+    Route::resource('settings',         'SettingsController');
+    Route::resource('users',            'UserController');
 });
