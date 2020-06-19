@@ -21,7 +21,8 @@ class PostsController extends Controller
     {
         $posts = Posts::orderByDesc('created_at')->where('online', true)->paginate(10);
         $settings = Settings::find(1);
-        return view('posts.index', compact('posts', 'settings'));
+        $post = null;
+        return view('posts.index', compact('post', 'posts', 'settings'));
     }
 
     /**

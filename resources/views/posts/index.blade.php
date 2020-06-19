@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
-@section('social-meta')
-@endsection
-
-@section('json-ld')
+@section('title')
+<title>{!! isset($settings) == true ? $settings->title : config('app.name', 'Laravel') !!}</title>
 @endsection
 
 @section('content')

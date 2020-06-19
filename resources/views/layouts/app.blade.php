@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="{{ URL::current() }}" />
     <link rel="alternate" href="{{ URL::current() }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
-
-    <title>{!! isset($post) == true ? ($post->title . ' &bull;') : '' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
+    
+    @yield('title')
     <meta name="description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

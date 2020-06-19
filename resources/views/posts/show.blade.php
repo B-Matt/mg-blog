@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>{!! $post->title . ' &bull;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
+@endsection
+
 @section('social-meta')
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="{{ isset($post) == true ? $post->title : config('app.name', 'Laravel') }}" />
