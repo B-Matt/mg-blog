@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<h1 class="mb-4">{{ isset($post) == false ? "New User" : "Edit User" }}</h1>
+<h1 class="mb-4">{{ isset($user) == false ? "New User" : "Edit User" }}</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -16,10 +16,11 @@
 <div class="container-fluid mb-5">
     <div class="row">
         <div class="col shadow bg-white w-100">
-        @if(empty($post ?? ''))
+        @if(empty($user ?? ''))
             <form class="bp-create-form p-4" action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @else
-            <form class="bp-create-form p-4" action="{{ route('users.update', $post ?? '') }}" method="POST" enctype="multipart/form-data">
+            <form class="bp-create-form p-4" action="{{ route('users.update', $user ?? '') }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
         @endif        
                 @csrf
                 <div class="form-group">
@@ -33,13 +34,22 @@
                 <div class="form-group">
                     <label for="user-password">Password</label>
                     <div class="form-inline">
-                    <input type="password" class="col mr-3 form-control" id="user-password" name="password" placeholder="••••••" value="{{ isset($user) == true ? $user->password : '' }}" autocomplete="new-password"/>
-                    <a href="#" id="bp-pwgn-btn" class="btn btn-primary">Generate</a>
+                        <div id="bp-pw-toggle" class="col form-inline pl-0">
+                            <input type="password" class="col form-control" id="user-password" name="password" placeholder="••••••" value="" autocomplete="new-password"/>
+                            <div class="bp-group-addon">
+                                <a href="#">
+                                    <i class="dash-icon flaticon-vision" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="#" id="bp-pwgn-btn" class="btn btn-primary">Generate</a>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password-confirm">Confirm password</label>
-                    <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="••••••" required autocomplete="new-password"/>
+                    <div id="bp-pw-toggle">
+                        <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="••••••" autocomplete="new-password"/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="user-avatar">Avatar Image</label>
@@ -47,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label for="user-about">About user</label>
-                    <textarea class="form-control" id="user-about" name="about">{{ isset($user) == true ? $post->about : old('about') }}</textarea>
+                    <textarea class="form-control" id="user-about" name="about">{{ isset($user) == true ? $user->about : old('about') }}</textarea>
                 </div>
                 <div class="float-right py-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -63,6 +73,7 @@
 <script>
 $(document).ready(function() {
 
+    // Password generation
     function generatePassword() {
 
         const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -81,6 +92,20 @@ $(document).ready(function() {
         const pw = generatePassword();
         $("#user-password").val(pw);
         $("#password-confirm").val(pw);
+    });
+
+    // Show/hide password
+    $("#bp-pw-toggle a").on('click', function(event) {
+        event.preventDefault();
+        if($('#bp-pw-toggle input').attr("type") == "text"){
+            $('#bp-pw-toggle input').attr('type', 'password');
+            $('#bp-pw-toggle i').addClass( "flaticon-vision" );
+            $('#bp-pw-toggle i').removeClass( "flaticon-vision-1" );
+        }else if($('#bp-pw-toggle input').attr("type") == "password"){
+            $('#bp-pw-toggle input').attr('type', 'text');
+            $('#bp-pw-toggle i').removeClass( "flaticon-vision" );
+            $('#bp-pw-toggle i').addClass( "flaticon-vision-1" );
+        }
     });
 });
 </script>

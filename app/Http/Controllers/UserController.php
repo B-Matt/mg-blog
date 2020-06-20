@@ -91,7 +91,20 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request);
+        $data = $request->validate([
+            'name' => 'required|string|max:32',
+            'email' => 'required|string|email:rfc,dns',
+            'password' => "",
+            'avatar' => 'required|url',
+            'about' => 'required|string|min:8',
+        ]);
+
+        // Password is not updated
+        if(empty($data["password"]))
+        {
+            $data["password"] = $user->password;
+        }
+        $user->update($data);
         return redirect()->route('users.index')->with('notification', 'User <strong>' . $user->name .  '</strong> is updated!');
     }
 

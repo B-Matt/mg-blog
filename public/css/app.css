@@ -11263,6 +11263,19 @@ a.text-dark:focus {
     text-transform: uppercase;
 }
 
+.bp-group-addon {
+    position: absolute;
+    right: 20px;
+}
+
+.bp-group-addon i {
+    color: var(--dark);
+}
+
+.bp-group-addon a:hover {
+    text-decoration: none;
+}
+
 .bp-create-form .editor-toolbar,
 .bp-create-form .tox-tinymce {
     border-radius: 0;
