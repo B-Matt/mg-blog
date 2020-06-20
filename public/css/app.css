@@ -11257,7 +11257,8 @@ a.text-dark:focus {
     color: #6c757d;
 }
 
-.bp-create-form button {
+.bp-create-form button,
+.bp-create-form .btn {
     border-radius: 0;
     text-transform: uppercase;
 }

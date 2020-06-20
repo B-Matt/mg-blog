@@ -32,7 +32,10 @@
                 </div>
                 <div class="form-group">
                     <label for="user-password">Password</label>
-                    <input type="password" class="form-control" id="user-password" name="password" placeholder="••••••" value="{{ isset($user) == true ? $user->password : '' }}" autocomplete="new-password"/>
+                    <div class="form-inline">
+                    <input type="password" class="col mr-3 form-control" id="user-password" name="password" placeholder="••••••" value="{{ isset($user) == true ? $user->password : '' }}" autocomplete="new-password"/>
+                    <a href="#" id="bp-pwgn-btn" class="btn btn-primary">Generate</a>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password-confirm">Confirm password</label>
@@ -46,23 +49,6 @@
                     <label for="user-about">About user</label>
                     <textarea class="form-control" id="user-about" name="about">{{ isset($user) == true ? $post->about : old('about') }}</textarea>
                 </div>
-                <div class="form-group">
-                    <label for="user-about">Roles</label> <!-- For petlja koja učitava sve role iz DB! -->
-                    <div class="form-control">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">1</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                            <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-                        </div>
-                    </div>
-                </div>
                 <div class="float-right py-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
@@ -71,4 +57,31 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+
+    function generatePassword() {
+
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const length = 10, n = charset.length;
+        let password = "";
+
+        for (let i = 0; i < length; i++) {
+
+            password += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return password;
+    }
+
+    $("#bp-pwgn-btn").click(function() {
+
+        const pw = generatePassword();
+        $("#user-password").val(pw);
+        $("#password-confirm").val(pw);
+    });
+});
+</script>
 @endsection
