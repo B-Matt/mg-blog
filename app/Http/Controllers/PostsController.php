@@ -82,7 +82,8 @@ class PostsController extends Controller
         if($post->online || Auth::check())
         {
             $settings = Settings::find(1);
-            return view('posts.show', compact('post', 'settings'));
+            $post_category = $post->categories;
+            return view('posts.show', compact('post', 'settings', 'post_category'));
         }
         return redirect()->route('posts.index');
     }
