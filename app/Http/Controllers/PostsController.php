@@ -72,12 +72,13 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  String $locale
      * @param  String  $param
      * @return \Illuminate\Http\Response
      */
-    public function show($param)
+    public function show($locale, $param)
     {
-        $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();
+        $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();        
         
         if($post->online || Auth::check())
         {
@@ -85,16 +86,17 @@ class PostsController extends Controller
             $post_category = $post->categories;
             return view('posts.show', compact('post', 'settings', 'post_category'));
         }
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', app()->getLocale());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  String      $locale
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $post) // Ne radi EDIT!
+    public function edit($locale, Posts $post)
     {
         $settings = Settings::find(1);
         $tags = Posts::existingTags();
@@ -113,11 +115,12 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  String $locale
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Posts  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $post)
+    public function update(Request $request, $locale, Posts $post)
     {
         $request->validate([
             'title' => 'required',
@@ -137,10 +140,11 @@ class PostsController extends Controller
     /**
      * Shows all posts tagged with certain tag.
      * 
+     * @param String $locale
      * @param String $tag
      * @return \Illuminate\Http\Response
      */
-    public function tagged($tag) {
+    public function tagged($locale, $tag) {
 
         $posts = Posts::withAnyTag($tag)->paginate(10);
         $settings = Settings::find(1);

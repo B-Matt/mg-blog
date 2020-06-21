@@ -24,15 +24,15 @@
         @endif        
                 @csrf
                 <div class="form-group">
-                    <label for="user-name">Name</label>
+                    <label for="user-name">{{ __('main.name') }}</label>
                     <input type="text" class="form-control" id="user-name" name="name" placeholder="John Doe" value="{{ isset($user) == true ? $user->name : old('name') }}" required />
                 </div>
                 <div class="form-group">
-                    <label for="user-mail">E-Mail</label>
+                    <label for="user-mail">{{ __('main.email') }}</label>
                     <input type="email" class="form-control" id="user-mail" name="email" placeholder="john.doe@themastetgames.com" value="{{ isset($user) == true ? $user->email : old('email') }}" required/>
                 </div>
                 <div class="form-group">
-                    <label for="user-password">Password</label>
+                    <label for="user-password">{{ __('main.password') }}</label>
                     <div class="form-inline">
                         <div id="bp-pw-toggle" class="col form-inline pl-0">
                             <input type="password" class="col form-control" id="user-password" name="password" placeholder="••••••" value="" autocomplete="new-password"/>
@@ -42,25 +42,25 @@
                                 </a>
                             </div>
                         </div>
-                        <a href="#" id="bp-pwgn-btn" class="btn btn-primary">Generate</a>
+                        <a href="#" id="bp-pwgn-btn" class="btn btn-primary">{{ __('main.generate') }}</a>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password-confirm">Confirm password</label>
+                    <label for="password-confirm">{{ __('main.confirm_pass') }}</label>
                     <div id="bp-pw-toggle">
                         <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="••••••" autocomplete="new-password"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="user-avatar">Avatar Image</label>
+                    <label for="user-avatar">{{ __('main.avatar_img') }}</label>
                     <input type="url" class="form-control" id="user-avatar" name="avatar" placeholder="http://imgur.com/" value="{{ isset($user) == true ? $user->avatar : old('avatar') }}" />
                 </div>
                 <div class="form-group">
-                    <label for="user-about">About user</label>
+                    <label for="user-about">{{ __('main.user_about') }}</label>
                     <textarea class="form-control" id="user-about" name="about">{{ isset($user) == true ? $user->about : old('about') }}</textarea>
                 </div>
                 <div class="float-right py-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>
                 </div>
                 {!! app('captcha')->render(); !!}
             </form>

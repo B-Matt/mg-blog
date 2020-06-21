@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="d-inline-flex mb-4">
-    <h1>All Users</h1>
+    <h1>{{ __('main.all_users') }}</h1>
 </div>
 
 <div class="container-fluid mb-5">
@@ -36,20 +36,20 @@
                                 <form method="post" action="{{ route('users.destroy', $user) }}" class="mr-3">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-link p-0" title="Delete user">
+                                    <button type="submit" class="btn btn-link p-0" title="{{ __('main.user_delete') }}">
                                         <i class="dash-icon flaticon-trash-bin"></i>
                                     </button>                                    
                                 </form>
                             </div>
                             <span class="m-0 mt-4">
                                 <div class="form-group mt-0 mb-0">
-                                    <strong>Name:</strong> {{ $user->name }}
+                                    <strong>{{ __('main.name') }}:</strong> {{ $user->name }}
                                 </div>
                                 <div class="form-group mt-2 mb-0">
-                                    <strong>E-Mail:</strong> {{ $user->email }}
+                                    <strong>{{ __('main.email') }}:</strong> {{ $user->email }}
                                 </div>
                                 <div class="form-group mt-2 mb-0">
-                                    <strong>About:</strong> {!! $user->about !!}
+                                    <strong>{{ __('main.user_about') }}:</strong> {!! $user->about !!}
                                 </div>
                             </span>
                         </div>

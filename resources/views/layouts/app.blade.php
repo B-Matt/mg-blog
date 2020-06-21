@@ -92,8 +92,7 @@
             </ul>
 
             <p>
-                © 2020. <a href="https://themastergames.com" title="Master Games Homepage">Master Games</a> All rights
-                reserved.
+                © 2020. <a href="https://themastergames.com" title="Master Games Homepage">Master Games</a> All rights reserved.
             </p>
 
             <ul class="footer-menu px-0">

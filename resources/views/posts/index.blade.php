@@ -13,7 +13,7 @@
             @else
             <div class="normal-post col-md-4">
             @endif
-            <a href="{{ route('posts.show', $post->slug) }}" class="post-link"></a>
+            <a href="{{ route('posts.show', ['locale' => app()->getLocale(),'post' => $post->slug]) }}" class="post-link"></a>
             <div class="card mx-auto">
                 @if($loop->iteration == 1)
                 <div class="row no-gutters">
@@ -43,16 +43,16 @@
                                 {!! $post->summary !!}
                             </span>
                             @if($loop->iteration == 1)
-                            <a href="{{route('posts.show', $post->slug)}}"
+                            <a href="{{ route('posts.show', array_merge(['post' => $post->slug], ['locale'=> app()->getLocale()])) }}"
                                 class="d-inline-flex mt-auto ml-auto px-0 pr-2 btn btn-link">
-                                Read more
+                                {{ __('main.read_more') }}
                                 <img src="{{ asset('/img/arrows.png') }}" class="ml-2" alt="Read more arrows"
                                     width="12" height="11" />
                             </a>
                             @else
-                            <a href="{{route('posts.show', $post->slug)}}"
+                            <a href="{{ route('posts.show', array_merge(['post' => $post->slug], ['locale'=> app()->getLocale()])) }}"
                                 class="d-inline-flex mt-auto mr-auto px-0 btn btn-link">
-                                Read more
+                                {{ __('main.read_more') }}
                                 <img src="{{ asset('/img/arrows.png') }}" class="ml-2" alt="Read more arrows"
                                     width="12" height="11" />
                             </a>

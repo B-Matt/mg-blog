@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('/', 'HomeController@redirect');
+
+Route::group([
+        'prefix' => '{locale}', 
+        'where' => ['locale' => 'en|hr'],
+        'middleware' => 'locale'
+    ], function() {
+
+    // BLOG
+    Route::any('/',                     'PostsController@index')->name('index');
+    Route::get('/tag/{tag?}',           'PostsController@tagged')->name('posts.tagged');
+    Route::resource('posts',            'PostsController');
+});
+
+// DASHBOARD
+Route::get('/dashboard',                'HomeController@index')->name('dash.index')->middleware('auth');
+Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts')->middleware('auth');
+Route::get('/dashboard/create',         'PostsController@create')->name('dash.create')->middleware('auth');
+
+Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility')->middleware('auth');
+
+Route::prefix('dashboard')->group(function () {
+    Route::resource('categories',       'CategoriesController')->middleware('auth');
+    Route::resource('settings',         'SettingsController')->middleware('auth');
+    Route::resource('users',            'UserController')->middleware('auth');
+});
+
 // AUTHORIZATION
 Route::get('login', [
     'as' => 'login',
@@ -26,23 +53,6 @@ Route::post('logout', [
     'as' => 'logout',
     'uses' => 'Auth\LoginController@logout'
 ]);
-
-// APP
-Route::any('/',                         'PostsController@index')->name('index');
-Route::get('/dashboard',                'HomeController@index')->name('dash.index');
-Route::get('/dashboard/posts',          'HomeController@posts')->name('dash.posts');
-Route::get('/dashboard/create',         'PostsController@create')->name('dash.create');
-
-Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility');
-Route::get('/posts/tag/{tag?}',         'PostsController@tagged')->name('posts.tagged');
-
-Route::resource('posts',                'PostsController');
-
-Route::prefix('dashboard')->group(function () {
-    Route::resource('categories',       'CategoriesController');
-    Route::resource('settings',         'SettingsController');
-    Route::resource('users',            'UserController');
-});
 
 // SITEMAP
 Route::get('/sitemap.xml',              'SitemapController@index');

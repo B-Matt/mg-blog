@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Posts;
 use App\User;
@@ -10,13 +11,11 @@ use App\Settings;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Redirects to index page with locale.
      */
-    public function __construct()
+    public function redirect()
     {
-        $this->middleware('auth');
+        return redirect(app()->getLocale()); 
     }
 
     /**
@@ -40,13 +39,5 @@ class HomeController extends Controller
         $posts = Posts::orderByDesc('created_at')->simplePaginate(10);
         $settings = Settings::find(1);
         return view('dashboard.posts',  compact('posts', 'settings'));
-    }
-
-    /**
-     * 
-     */
-    public function category_create(Request $request) 
-    {
-        dd($request);
     }
 }

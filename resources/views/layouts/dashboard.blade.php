@@ -100,41 +100,40 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('dash.index') }}">
                                     <i class="dash-icon flaticon-browser"></i>
-                                    <span>Dashboard</span>
+                                    <span>{{ __('main.dashboard') }}</span>
                                 </a>
                             </li>
                             <li class="dropdown">
                                 <button type="button" class="btn btn-link dropdown-toggle w-100 text-left"
                                     data-toggle="dropdown">
                                     <i class="dash-icon flaticon-chat"></i>
-                                    <span>Posts</span>
+                                    <span>{{ __('main.posts') }}</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('dash.posts') }}">All Posts</a>
-                                    <a class="dropdown-item" href="{{ route('dash.create') }}">Create Post</a>
-                                    <a class="dropdown-item" href="{{ route('categories.index') }}">Categories</a>
+                                    <a class="dropdown-item" href="{{ route('dash.posts') }}">{{ __('main.post_all') }}</a>
+                                    <a class="dropdown-item" href="{{ route('dash.create') }}">{{ __('main.post_create') }}</a>
+                                    <a class="dropdown-item" href="{{ route('categories.index') }}">{{ __('main.categories') }}</a>
                                 </div>
                             </li>
                             <li class="dropdown">
                                 <button type="button" class="btn btn-link dropdown-toggle w-100 text-left"
                                     data-toggle="dropdown">
                                     <i class="dash-icon flaticon-user"></i>
-                                    <span>Users</span>
+                                    <span>{{ __('main.users') }}</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">All Users</a>
-                                    <a class="dropdown-item" href="{{ route('users.create') }}">Create User</a>
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('main.all_users') }}</a>
+                                    <a class="dropdown-item" href="{{ route('users.create') }}">{{ __('main.create_user') }}</a>
                                 </div>
                             </li>
                             <li class="dropdown">
                                 <button type="button" class="btn btn-link dropdown-toggle w-100 text-left"
                                     data-toggle="dropdown">
                                     <i class="dash-icon flaticon-settings"></i>
-                                    <span>Settings</span>
+                                    <span>{{ __('main.settings') }}</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('settings.index') }}">General</a>
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">Ads</a>
+                                <a class="dropdown-item" href="{{ route('settings.index') }}">{{ __('main.general') }}</a>
                                 </div>
                             </li>
                         </ul>

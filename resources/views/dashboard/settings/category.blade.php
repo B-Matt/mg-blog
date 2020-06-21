@@ -6,30 +6,30 @@
 
 @section('content')
 <div class="d-inline-flex mb-4">
-    <h1>Blog Categories</h1>
+    <h1>Blog {{ __('main.categories') }}</h1>
 </div>
 
 <div class="container-fluid mb-5">
     <div class="row">    
         <div class="col-md-4 shadow bg-white">
             <div class="p-4">
-                <h3>Create new category</h3>
+                <h3>{{ __('main.category_new') }}</h3>
                 <form class="bp-create-form mt-3" action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf                    
                     <div class="form-group">
-                        <label for="catName">Name</label>
-                        <input type="text" class="form-control" id="catName" name="name" placeholder="Category name" required />
+                        <label for="catName">{{ __('main.name') }}</label>
+                        <input type="text" class="form-control" id="catName" name="name" placeholder="{{ __('main.category_name') }}" required />
                     </div>
                     <div class="form-group">
-                        <label for="catSlug">Slug</label>
-                        <input type="text" class="form-control" id="catSlug" name="slug" placeholder="Category slug" required />
+                        <label for="catSlug">{{ __('main.slug') }}</label>
+                        <input type="text" class="form-control" id="catSlug" name="slug" placeholder="{{ __('main.category_slug') }}" required />
                     </div>
                     <div class="form-group">
-                        <label for="catDesc">Description</label>
-                        <input type="text" class="form-control" id="catDesc" name="description" placeholder="Category description" />
+                        <label for="catDesc">{{ __('main.description') }}</label>
+                        <input type="text" class="form-control" id="catDesc" name="description" placeholder="{{ __('main.category_desc') }}" />
                     </div>
                     <div class="form-group">
-                        <label for="catParent">Parent Category</label>
+                        <label for="catParent">{{ __('main.category_parent') }}</label>
                         <select class="form-control" id="catParent" name="parent" required>
                             <option selected="selected">None</option>
                             @if(isset($categories))
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     <div class="float-right py-3">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>
                     </div>
                     {!! app('captcha')->render(); !!}
                 </form>
@@ -53,10 +53,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="text-primary">Name</th>
-                            <th class="text-primary">Description</th>
-                            <th class="text-primary">Slug</th>
-                            <th class="text-primary">Action</th>
+                            <th class="text-primary">{{ __('main.name') }}</th>
+                            <th class="text-primary">{{ __('main.description') }}</th>
+                            <th class="text-primary">{{ __('main.slug') }}</th>
+                            <th class="text-primary">{{ __('main.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,13 +68,13 @@
                                     <td class="dash-category-editable">{{ $category->slug }}</td>
                                     <td class="d-inline-flex pt-1 dash-category-actions">
                                         <div class="dash-category-actions-static">
-                                            <button type="submit" class="dash-category-edit btn btn-link p-0 mr-3" title="Edit category" category-data="{{ $category->id }}">
+                                            <button type="submit" class="dash-category-edit btn btn-link p-0 mr-3" title="{{ __('main.category_edit') }}" category-data="{{ $category->id }}">
                                                 <i class="dash-icon flaticon-pencil"></i>
                                             </button>
                                             <form method="post" action="{{ route('categories.destroy', $category) }}" class="m-0 w-50">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-link p-0" title="Delete category">
+                                                <button type="submit" class="btn btn-link p-0" title="{{ __('main.category_delete') }}">
                                                     <i class="dash-icon flaticon-trash-bin"></i>
                                                 </button>
                                             </form>

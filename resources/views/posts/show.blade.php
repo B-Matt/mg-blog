@@ -43,7 +43,7 @@
             <div class="bp-header-title">
                 <div class="col-md-5 mx-auto">
                     <div role="button" class="bp-title pt-3 pb-3 text-center">
-                        <h1 class="mb-0">{{$post->title}}</h1>
+                        <h1 class="mb-0">{{ $post->title }}</h1>
                         <h6 class="mb-0">
                             {{ $post->author->name }} &ndash;
                             {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
@@ -65,15 +65,15 @@
             <div class="bp-sidebar">
                 <ul class="bp-tags px-0">
                     @foreach($post->tags as $tag)
-                    <li><a href="{{ route('posts.tagged', $tag->name ?? '') }}">{{ $tag->name }}</a></li>
+                    <li><a href="{{ route('posts.tagged', ['locale' => app()->getLocale(), 'tag' => $tag->name ?? '']) }}">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
-                <span class="bp-share">Share this post:</span>
+                <span class="bp-share">{{ __('main.post_share') }}:</span>
                 <ul class="bp-social mt-0 px-0">
                     <li><a href="https://www.facebook.com/MasterGamesStudios/" rel="noopener" target="_blank"
-                            title="Share blog post on Facebook" hreflang="en"><i class="flaticon-facebook"></i></a></li>
+                            title="{{ __('main.share_post_fb') }}" hreflang="en"><i class="flaticon-facebook"></i></a></li>
                     <li><a href="https://twitter.com/MasterGamesStu2?lang=en" rel="noopener" target="_blank"
-                            title="Share blog posts on Twitter" hreflang="en"><i class="flaticon-twitter"></i></a></li>
+                            title="{{ __('main.share_post_tw') }}" hreflang="en"><i class="flaticon-twitter"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}'s Avatar" />
                 </div>
                 <div class="col ml-4">
-                    <span class="bp-author-stext">Written by:</span>
+                    <span class="bp-author-stext">{{ __('main.written_by') }}:</span>
                     <h3 class="mb-1">{{ $post->author->name }}</h3>
                     <small>{{ $post->author->about }}</small>
                 </div>
