@@ -9,6 +9,15 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use \Spatie\Translatable\HasTranslations;
+
+
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    public $translatable = ['about'];
 
     /**
      * The attributes that are mass assignable.

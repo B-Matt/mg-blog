@@ -29,8 +29,8 @@ class CreateSettingsTable extends Migration
         DB::table('settings')->insert(
             array(
                 'title' => 'Default Blog Name',
-                'short_title' => '&bull; Blog',
-                'description' => 'Lorem ipsum anet...',
+                'short_title' => 'Blog',
+                'description' => 'Lorem ipsum anet&hellip;',
                 'icon_fav' => '',
                 'icon_apple' => '',
                 'theme_color' => '#e6f0fc',

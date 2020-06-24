@@ -47,18 +47,19 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title.*' => 'required|min:2|max:64',
             'cover_img' => 'required',
+            'body.*' => 'required|min:8',
         ]);
 
         $author = Auth::user();
-        $post = new Posts;       
+        $post = new Posts;
 
-        $post->title = $request->title;
-        $post->slug = Str::slug($post->title, '-');
+        $post->setTranslations('title', $this->format_locale_str($request->title));
+        $post->setTranslations('body', $this->format_locale_str($request->body));
+        $post->setTranslations('slug', $this->format_locale_slug($request->title));
+
         $post->cover_img = $request->cover_img;
-        $post->body = str_replace("background-color: #ffffff;", "", $request->body);
-        $post->summary = str_replace("background-color: #ffffff;", "", $request->summary);
         $post->online = $request->online;
         $post->author()->associate($author);
         
@@ -78,8 +79,7 @@ class PostsController extends Controller
      */
     public function show($locale, $param)
     {
-        $post = Posts::where('id', $param)->orWhere('slug', $param)->firstOrFail();        
-        
+        $post = Posts::where('id', $param)->orWhere('slug->' . $locale, $param)->firstOrFail();
         if($post->online || Auth::check())
         {
             $settings = Settings::find(1);
@@ -123,12 +123,19 @@ class PostsController extends Controller
     public function update(Request $request, $locale, Posts $post)
     {
         $request->validate([
-            'title' => 'required',
+            'title.*' => 'required|min:2|max:64',
             'cover_img' => 'required',
+            'body.*' => 'required|min:8',
         ]);
 
         $data = $request->except(['tags']);
-        $data["slug"] = Str::slug($request->title, '-');
+        $data["title"] = $this->format_locale_str($request->title);
+        $data["slug"] = $this->format_locale_slug($request->title);
+        $data["body"] = $this->format_locale_str($request->body);
+
+        //$post->setTranslations('title', $this->format_locale_str($request->title));
+        //$post->setTranslations('body', $this->format_locale_str($request->body));
+        //$post->setTranslations('slug', $this->format_locale_slug($request->title));
 
         $post->update($data);
         $post->retag($request->tags);
@@ -157,7 +164,7 @@ class PostsController extends Controller
      * @param  \App\Posts  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $post)
+    public function destroy($locale, Posts $post)
     {
         $post->delete();
         return redirect()->route('dash.posts')->with('notification', 'Blog post titled <strong>' . $post->title .  '</strong> is deleted!');
@@ -174,5 +181,42 @@ class PostsController extends Controller
         $post->online = $request->visibility;
         $post->save();        
         return redirect()->route('dash.posts');
+    }
+
+
+    /**
+     * Formats JSON string from input array used for localization.
+     */
+    private function format_locale_str($input)
+    {
+        $locales = config('mgblog.avaliable_locales');
+        $translations = [
+            $locales[0]['locale'] => $input[0]
+        ];
+
+        for($i = 1, $len = count($locales); $i < $len; $i++)
+        {
+            $temp = [$locales[$i]['locale'] => $input[$i]];
+            $translations = array_merge($translations, $temp);
+        }
+        return $translations;
+    }
+
+    /**
+     * Formats JSON string from input array used for localization.
+     */
+    private function format_locale_slug($input)
+    {
+        $locales = config('mgblog.avaliable_locales');
+        $translations = [
+            $locales[0]['locale'] => Str::slug($input[0], '-')
+        ];
+
+        for($i = 1, $len = count($locales); $i < $len; $i++)
+        {
+            $temp = [$locales[$i]['locale'] => Str::slug($input[$i], '-')];
+            $translations = array_merge($translations, $temp);
+        }
+        return $translations;
     }
 }

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="d-inline-flex mb-4">
-    <h1>{{ __('main.general') }}}</h1>
+    <h1>{{ __('main.general') }}</h1>
 </div>
 
 <div class="container-fluid mb-5">

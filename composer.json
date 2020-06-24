@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "rinvex/laravel-categories": "^4.0",
-        "rtconner/laravel-tagging": "~4.0"
+        "rtconner/laravel-tagging": "~4.0",
+        "spatie/laravel-translatable": "^4.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

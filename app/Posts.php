@@ -8,14 +8,22 @@ class Posts extends Model
 {
     use \Conner\Tagging\Taggable;
     use \Rinvex\Categories\Traits\Categorizable;
+    use \Spatie\Translatable\HasTranslations;
     
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    public $translatable = ['title', 'slug', 'body'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'cover_img', "body", "summary", "online"
+        'title', 'slug', 'cover_img', "body", "online"
     ];
 
     /**

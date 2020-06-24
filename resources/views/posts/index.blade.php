@@ -40,7 +40,7 @@
                             </small>
                             <hr>
                             <span class="card-text text-justify">
-                                {!! $post->summary !!}
+                                {{ substr(strip_tags($post->body), 0, 115) }}...
                             </span>
                             @if($loop->iteration == 1)
                             <a href="{{ route('posts.show', array_merge(['post' => $post->slug], ['locale'=> app()->getLocale()])) }}"

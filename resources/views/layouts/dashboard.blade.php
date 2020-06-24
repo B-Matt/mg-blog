@@ -34,6 +34,7 @@
 
     <!-- START Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('extra-css')
     <!-- END Styles -->
 </head>
 
@@ -155,6 +156,10 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
+    @yield('extra-js')
+    @yield('js-code')
 </body>
 
 </html>

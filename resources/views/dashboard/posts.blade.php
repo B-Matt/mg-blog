@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="d-inline-flex mb-4">
-    <h1>{{ __('post_all') }}</h1>
+    <h1>{{ __('main.post_all') }}</h1>
     <a href="{{ route('posts.create', app()->getLocale()) }}">                           
         <button class="btn btn-success ml-3 d-inline-flex">
             <i class="dash-icon flaticon-chat"></i>
@@ -28,14 +28,14 @@
                                 aria-controls="collapse{{ $loop->iteration }}"
                                 class="d-block position-relative text-dark text-uppercase collapsible-link py-2">
                                 {{ $post->title }}
-                                {!! $post->online == 0 ? '<span class="text-muted font-weight-light"> - {{ __('main.post_hidden_s') }}</span>' : '' !!}
+                                {!! $post->online == 0 ? '<span class="text-muted font-weight-light"> -' . __('main.post_hidden_s') . '</span>' : '' !!}
                             </a>
                         </h6>
                     </div>
                     <div id="collapse{{ $loop->iteration }}" aria-labelledby="heading{{ $loop->iteration }}" data-parent="#postsAccord"
                         class="collapse">
                         <div class="dash-body card-body p-5">
-                            {!! $post->online == 0 ? '<strong class="text-danger">{{ __('main.post_hidden') }}</strong><br>' : '' !!}
+                            {!! $post->online == 0 ? '<strong class="text-danger">' . __('main.post_hidden') . '</strong><br>' : '' !!}
                             <small role="button" class="text-muted">
                                 <i class="dash-icon flaticon-user mr-1"></i> 
                                 {{ $post->author->name }}
@@ -44,7 +44,7 @@
                                 {{\Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}
                             </small>                            
                             <div class="d-inline-flex float-right">
-                                <a href="{{ route('posts.show', ['locale' => app()->getLocale(), 'post' => $post->slug]) }}" class="mr-3" title="{{ __('main.post_view') }}">
+                                <a href="{{ route('posts.show', ['locale' => app()->getLocale(), 'post' => $slugs[$post->id][0]]) }}" class="mr-3" title="{{ __('main.post_view') }}">
                                     <i class="dash-icon flaticon-vision"></i>
                                 </a>
                                 <a href="{{ route('posts.edit', ['locale' => app()->getLocale(), 'post' => $post]) }}" class="mr-3" title="{{ __('main.post_edit') }}">

@@ -1,5 +1,8 @@
 @extends('layouts.dashboard')
 
+@section('extra-css')
+@endsection
+
 @section('content')
 <h1 class="mb-4">{{ isset($user) == false ? "New User" : "Edit User" }}</h1>
 
@@ -57,7 +60,24 @@
                 </div>
                 <div class="form-group">
                     <label for="user-about">{{ __('main.user_about') }}</label>
-                    <textarea class="form-control" id="user-about" name="about">{{ isset($user) == true ? $user->about : old('about') }}</textarea>
+                    <span class="text-muted float-right d-inline-flex mr-3">
+                        Language:
+
+                        <?php $locales = config('mgblog.avaliable_locales') ?>
+                        <div class="ml-2 dropdown">
+                            <a href="" class="dropdown-toggle" type="button" id="localeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ $locales[0]['name'] }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="localeDropdown">
+                                @foreach($locales as $locale)
+                                    <li><a href="#" class="pl-3" data-value="{{ $locale['locale'] }}">{{ $locale['name'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </span>
+                    @foreach($locales as $locale)
+                        <textarea class="form-control" id="user-about-{{ $locale['locale'] }}" name="about[]">{{ isset($user) == true ? $user->translations['about'][$locale['locale']] : old('about[$loop->index]') }}</textarea>
+                    @endforeach
                 </div>
                 <div class="float-right py-3">
                     <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>
@@ -67,46 +87,76 @@
         </div>
     </div>
 </div>
+@endsection
 
+
+@section('extra-js')
 <script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
+@endsection
 
+@section('js-code')
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    // Password generation
-    function generatePassword() {
+        // Password generation
+        function generatePassword() {
 
-        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const length = 10, n = charset.length;
-        let password = "";
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            const length = 10, n = charset.length;
+            let password = "";
 
-        for (let i = 0; i < length; i++) {
+            for (let i = 0; i < length; i++) {
 
-            password += charset.charAt(Math.floor(Math.random() * n));
+                password += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return password;
         }
-        return password;
-    }
 
-    $("#bp-pwgn-btn").click(function() {
+        $("#bp-pwgn-btn").click(function(event) {
 
-        const pw = generatePassword();
-        $("#user-password").val(pw);
-        $("#password-confirm").val(pw);
+            event.preventDefault();
+            const pw = generatePassword();
+
+            $("#user-password").val(pw);
+            $("#password-confirm").val(pw);
+        });
+
+        // Show/hide password
+        $("#bp-pw-toggle a").on('click', function(event) {
+            event.preventDefault();
+            if($('#bp-pw-toggle input').attr("type") == "text"){
+                $('#bp-pw-toggle input').attr('type', 'password');
+                $('#bp-pw-toggle i').addClass( "flaticon-vision" );
+                $('#bp-pw-toggle i').removeClass( "flaticon-vision-1" );
+            }else if($('#bp-pw-toggle input').attr("type") == "password"){
+                $('#bp-pw-toggle input').attr('type', 'text');
+                $('#bp-pw-toggle i').removeClass( "flaticon-vision" );
+                $('#bp-pw-toggle i').addClass( "flaticon-vision-1" );
+            }
+        });
+
+        // Locale menu
+        $("#user-about-en").show();
+        $("#user-about-hr").hide();
+
+        $(".dropdown-menu li a").click(function(event) {
+
+            event.preventDefault();
+            const value = $(this).data('value');
+            $(this).parents(".dropdown").find('.dropdown-toggle').html($(this).text() + ' <span class="caret"></span>');
+            $(this).parents(".dropdown").find('.dropdown-toggle').val(value);
+
+            if(value == "en") {
+
+                $("#user-about-en").show();
+                $("#user-about-hr").hide();
+            }
+            else if(value == "hr") {
+
+                $("#user-about-hr").show();
+                $("#user-about-en").hide();
+            }
+        });
     });
-
-    // Show/hide password
-    $("#bp-pw-toggle a").on('click', function(event) {
-        event.preventDefault();
-        if($('#bp-pw-toggle input').attr("type") == "text"){
-            $('#bp-pw-toggle input').attr('type', 'password');
-            $('#bp-pw-toggle i').addClass( "flaticon-vision" );
-            $('#bp-pw-toggle i').removeClass( "flaticon-vision-1" );
-        }else if($('#bp-pw-toggle input').attr("type") == "password"){
-            $('#bp-pw-toggle input').attr('type', 'text');
-            $('#bp-pw-toggle i').removeClass( "flaticon-vision" );
-            $('#bp-pw-toggle i').addClass( "flaticon-vision-1" );
-        }
-    });
-});
 </script>
 @endsection

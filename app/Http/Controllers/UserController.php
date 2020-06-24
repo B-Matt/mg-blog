@@ -45,13 +45,25 @@ class UserController extends Controller
             'email' => 'required|string|email:rfc,dns|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'avatar' => 'required|url',
-            'about' => 'required|string|min:8',
+            'about.*' => 'required|string|min:8',
         ]);
         $user = new User;
 
         $user->name = $request->name;
         $user->avatar = $request->avatar;
-        $user->about = $request->about;
+
+        $locales = config('mgblog.avaliable_locales');
+        $translations = [
+            $locales[0]['locale'] => $request->about[0]
+        ];
+
+        for($i = 1, $len = count($locales); $i < $len; $i++)
+        {
+            $temp = [$locales[$i]['locale'] => $request->about[$i]];
+            $translations = array_merge($translations, $temp);
+        }
+
+        $user->setTranslations('about', $translations);
         $user->email = $request->email;
         $user->password = Hash::make($request->pass);
         $user->save();
@@ -96,8 +108,10 @@ class UserController extends Controller
             'email' => 'required|string|email:rfc,dns',
             'password' => "",
             'avatar' => 'required|url',
-            'about' => 'required|string|min:8',
+            'about.*' => 'required|string|min:8',
         ]);
+
+        $data["about"] = $user->translations;
 
         // Password is not updated
         if(empty($data["password"]))

@@ -11000,6 +11000,10 @@ a.text-dark:focus {
 /*------------------------
 	Header
 --------------------------*/
+.btn:hover {
+    text-decoration: none;
+}
+
 .responsive {
     display: none;
 }
@@ -11178,7 +11182,8 @@ a.text-dark:focus {
     overflow-y: scroll;
 }
 
-.dash-body a:hover {
+.dash-body a:hover,
+.dash-body button:hover {
     color: lightblue;
     text-decoration: none;
 }
@@ -11245,20 +11250,47 @@ a.text-dark:focus {
 	Blog Posts (Create)
 --------------------------*/
 .bp-create-form input,
-.bp-create-form select {
+.bp-create-form select,
+.bp-mod-input {
     border-radius: 0;
     border: none;
     border-bottom: 2px solid #ced4da;
 }
 
-.bp-create-form label {
-    font-size: 1.05em;
-    margin-bottom: 0px;
+.bp-title-inputs {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#bp-cover-img {
+    width: 640px;
+    max-height: 244px;
+}
+
+.bp-create-form .ck .ck-editor__editable_inline {
+    height: 400px;
+}
+
+.bp-set-cover-img {
+    display: block;
     color: #6c757d;
+    width: 100%;
+    border: 1px dashed #a2aab2;
+    background-color: #edeff0;
+    min-height: 90px;
+    line-height: 20px;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.bp-set-cover-img:hover {
+    border: 1px solid #a2aab2;
+    background-color: var(--light);
 }
 
 .bp-create-form button,
-.bp-create-form .btn {
+.bp-create-form .btn,
+.bp-cover-mod-set {
     border-radius: 0;
     text-transform: uppercase;
 }
@@ -11310,6 +11342,15 @@ a.text-dark:focus {
     background: transparent !important;
 }
 
+#bp-cover-mod .modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+#bp-cover-mod .modal-title {
+    font-size: 1.4em;
+}
+
 /*------------------------
 	Blog Posts (Index)
 --------------------------*/
@@ -11357,6 +11398,7 @@ a.text-dark:focus {
 .normal-post .card-img,
 .normal-post .card-img-top {
     border-radius: 0;
+    max-height: 405px;
 }
 
 .sticky-post {

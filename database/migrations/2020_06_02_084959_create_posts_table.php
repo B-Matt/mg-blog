@@ -16,11 +16,10 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id');
-            $table->string('title');
-            $table->string('slug')->index();
+            $table->{$this->jsonable()}('title');
+            $table->{$this->jsonable()}('slug')->index();
             $table->string('cover_img');
-            $table->text('body')->nullable();
-            $table->text('summary')->nullable();
+            $table->{$this->jsonable()}('body')->nullable();
             $table->char('online', 1);
             $table->timestamps();
         });
@@ -34,5 +33,19 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+    }
+
+    /**
+     * Get jsonable column data type.
+     *
+     * @return string
+     */
+    protected function jsonable(): string
+    {
+        $driverName = DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
+        $dbVersion = DB::connection()->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION);
+        $isOldVersion = version_compare($dbVersion, '5.7.8', 'lt');
+
+        return $driverName === 'mysql' && $isOldVersion ? 'text' : 'json';
     }
 }
