@@ -183,7 +183,6 @@ class PostsController extends Controller
         return redirect()->route('dash.posts');
     }
 
-
     /**
      * Formats JSON string from input array used for localization.
      */

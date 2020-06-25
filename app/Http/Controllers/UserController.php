@@ -111,7 +111,7 @@ class UserController extends Controller
             'about.*' => 'required|string|min:8',
         ]);
 
-        $data["about"] = $user->translations;
+        $data["about"] = $this->format_locale_str($request->about);
 
         // Password is not updated
         if(empty($data["password"]))
@@ -132,5 +132,23 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index')->with('notification', 'User <strong>' . $user->name .  '</strong> is deleted!');
+    }
+
+    /**
+     * Formats JSON string from input array used for localization.
+     */
+    private function format_locale_str($input)
+    {
+        $locales = config('mgblog.avaliable_locales');
+        $translations = [
+            $locales[0]['locale'] => $input[0]
+        ];
+
+        for($i = 1, $len = count($locales); $i < $len; $i++)
+        {
+            $temp = [$locales[$i]['locale'] => $input[$i]];
+            $translations = array_merge($translations, $temp);
+        }
+        return $translations;
     }
 }

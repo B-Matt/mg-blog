@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,30 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    /**
-     * Logs in user and shows dashboard.
-     * 
-     * @return redirect
-     */
-    public function login(Request $request)
-    {  
-        $this->validate($request, [
-            'email'    => 'required',
-            'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
-        ]);
-
-        $input = $request->all();
-  
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            return redirect()->route('dash.index');
-        }
-        else
-        {
-            return redirect()->route('login')->with('error','Sorry the credentials you are using are invalid.');
-        }
     }
 }

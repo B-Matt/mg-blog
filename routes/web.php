@@ -59,3 +59,6 @@ Route::get('/sitemap.xml',              'SitemapController@index');
 Route::get('/sitemap.xml/posts',        'SitemapController@posts');
 Route::get('/sitemap.xml/categories',   'SitemapController@categories');
 Route::get('/sitemap.xml/tags',         'SitemapController@tags');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
