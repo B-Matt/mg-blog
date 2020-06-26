@@ -3,6 +3,7 @@
 --------------------------*/
 .content-section {
     position: relative;
+    top: 35px;
     min-height: 350px;
 }
 
@@ -456,4 +457,36 @@
 
 .bp-tags li a:hover {
     text-decoration: none;
+}
+
+/*------------------------
+	Responsivness
+--------------------------*/
+@media only screen and (max-width: 767px) {
+    .blog-posts {
+        padding: 0;
+    }
+
+    .sticky-post {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+
+    .bp-share {
+        margin-left: 7.7rem;
+    }
+
+    .bp-author {
+        padding: 10px 0px;
+    }
+
+    .bp-author img {
+        margin: 20px 0px;
+    }
+
+    .bp-author-stext {
+        font-size: 0.75rem;
+    }
 }

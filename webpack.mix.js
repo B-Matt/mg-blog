@@ -17,6 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
         'public/css/app.css',
         'resources/css/blog-framework.css',
         'resources/css/mg-theme.css',
-        'resources/css/responsive.css',
     ], 'public/css/app.css')
     .version();

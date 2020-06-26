@@ -13,53 +13,99 @@
     font-weight: normal;
     font-style: normal;
 }
-  
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     @font-face {
         font-family: "Flaticon";
         src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
     }
 }
-  
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
     font-family: Flaticon;
     font-size: 20px;
     font-style: normal;
 }
-  
-.flaticon-facebook:before { content: "\f100"; }
-.flaticon-youtube-logo:before { content: "\f101"; }
-.flaticon-instagram:before { content: "\f102"; }
-.flaticon-twitter:before { content: "\f103"; }
-.flaticon-menu:before { content: "\f104"; }
-.flaticon-browser:before { content: "\f105"; }
-.flaticon-chat:before { content: "\f106"; }
-.flaticon-settings:before { content: "\f107"; }
-.flaticon-user:before { content: "\f108"; }
-.flaticon-pencil:before { content: "\f109"; }
-.flaticon-search:before { content: "\f10a"; }
-.flaticon-calendar:before { content: "\f10b"; }
-.flaticon-vision:before { content: "\f10c"; }
-.flaticon-trash-bin:before { content: "\f10d"; }
-.flaticon-vision-1:before { content: "\f10e"; }
 
-/*------------------------
-	Header
---------------------------*/
+.flaticon-facebook:before {
+    content: "\f100";
+}
+
+.flaticon-youtube-logo:before {
+    content: "\f101";
+}
+
+.flaticon-instagram:before {
+    content: "\f102";
+}
+
+.flaticon-twitter:before {
+    content: "\f103";
+}
+
+.flaticon-menu:before {
+    content: "\f104";
+}
+
+.flaticon-browser:before {
+    content: "\f105";
+}
+
+.flaticon-chat:before {
+    content: "\f106";
+}
+
+.flaticon-settings:before {
+    content: "\f107";
+}
+
+.flaticon-user:before {
+    content: "\f108";
+}
+
+.flaticon-pencil:before {
+    content: "\f109";
+}
+
+.flaticon-search:before {
+    content: "\f10a";
+}
+
+.flaticon-calendar:before {
+    content: "\f10b";
+}
+
+.flaticon-vision:before {
+    content: "\f10c";
+}
+
+.flaticon-trash-bin:before {
+    content: "\f10d";
+}
+
+.flaticon-vision-1:before {
+    content: "\f10e";
+}
+
 .btn:hover {
     text-decoration: none;
 }
+
+/*------------------------
+	Header css
+--------------------------*/
 
 .responsive {
     display: none;
 }
 
 .header-section {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
-    height: 94px;
     width: 100%;
     z-index: 999;
     padding: 0 50px;
@@ -75,7 +121,6 @@
 
 .header-section .logo {
     display: inline-block;
-    float: left;
     padding-top: 24px;
 }
 
@@ -90,25 +135,18 @@
 .header-section .menu-list {
     list-style: none;
     float: right;
-    margin-bottom: 0;
-}
-
-.header-section .menu-list li {
-    display: inline;
-    margin-right: -5px;
 }
 
 .header-section .menu-list li a {
     display: inline-block;
     padding: 35px 15px;
     height: 93px;
-    width: 100px;
+    margin-right: 15px;
     color: #222;
     background: none;
     position: relative;
     font-family: "Roboto", sans-serif;
     font-size: 15px;
-    text-align: center;
     letter-spacing: 0.09em;
     -webkit-transition: all 0.25s ease 0s;
     -o-transition: all 0.25s ease 0s;
@@ -128,6 +166,10 @@
     z-index: -1;
 }
 
+.header-section .menu-list li {
+    display: inline;
+}
+
 .header-section .menu-list li a:hover::after {
     top: 0;
     height: 100%;
@@ -135,15 +177,17 @@
 
 .header-section .menu-list li a:hover {
     color: white;
-    text-decoration: none;
 }
 
 .header-section .menu-list li:last-child a {
     margin-right: 0;
 }
 
-.header-section .menu-list li.active a {
+.header-section .menu-list li.active {
     background: #2be6ab;
+}
+
+.header-section .menu-list li.active a {
     color: white;
 }
 
@@ -157,7 +201,7 @@
 --------------------------*/
 .sticky-post .card-title,
 .normal-post .card-title {
-	color: #2149b5;
+    color: #2149b5;
 }
 
 .sticky-post .card-subtitle,
@@ -179,17 +223,17 @@
 	Blog Posts (Details)
 --------------------------*/
 .bp-overlay {
-	background: #6a23b5 url("../img/overlay.png") no-repeat;
+    background: #6a23b5 url("../img/overlay.png") no-repeat;
 }
 
 .bp-header-title {
-	font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
     font-weight: 400;
 }
 
 .bp-header-title h1 {
-	background: #2be6ab;
-	color: #0b1033;
+    background: #2be6ab;
+    color: #0b1033;
 }
 
 .bp-body h1,
@@ -201,7 +245,7 @@
 
 .bp-body h1 {
     margin-top: 3rem;
-    text-transform: uppercase;    
+    text-transform: uppercase;
 }
 
 .bp-body blockquote {
@@ -225,18 +269,18 @@
 }
 
 .bp-author {
-	background: #6a23b5;
-	color: white;
+    background: #6a23b5;
+    color: white;
 }
 
 .bp-author img {
-	border: 2px solid #2be6ab;
+    border: 2px solid #2be6ab;
     border-radius: 100%;
 }
 
 .bp-tags li {
-	background-color: #6a23b5;
-	color: white;
+    background-color: #6a23b5;
+    color: white;
 }
 
 /*------------------------
@@ -316,4 +360,73 @@
 
 .footer-section a:hover {
     color: #2be6ab;
+}
+
+/*------------------------
+	Responsivness
+--------------------------*/
+@media only screen and (max-width: 767px) {
+    .header-section .logo {
+        padding: 25px 0 20px 25px;
+    }
+
+    .header-section .menu-list {
+        display: none;
+        float: none;
+        clear: both;
+        padding: 0;
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+
+    .header-section .menu-list li {
+        display: block;
+    }
+
+    .header-section .menu-list li a {
+        display: block;
+        padding: 36px 25px;
+        margin-right: 0;
+    }
+
+    .header-section .menu-list li a:after {
+        left: 0%;
+    }
+
+    .header-section .menu-list li a:hover:after {
+        width: 10px;
+        margin-left: 10px;
+    }
+
+    .header-section .menu-list .current a:after {
+        margin-left: 10px;
+    }
+
+    .responsive {
+        display: block;
+        color: #333;
+        font-size: 25px;
+        position: absolute;
+        right: 35px;
+        top: 25px;
+    }
+
+    .buttons button {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .header-section {
+        padding: 0 0;
+    }
+
+    .buttons button {
+        margin-bottom: 20px;
+    }
+
+    .footer-section p {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }

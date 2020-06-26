@@ -37227,6 +37227,13 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  $('.responsive').on('click', function (event) {
+    $('.menu-list').slideToggle(400);
+    event.preventDefault();
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

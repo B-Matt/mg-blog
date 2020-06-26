@@ -56,7 +56,7 @@
 </div>
 <div class="container-fluid py-5">
     <div class="row">
-        <article class="col-md-6 offset-3">
+        <article class="col-md-6 offset-md-3">
             <div class="bp-body">
                 {!! $post->body !!}
             </div>
@@ -82,17 +82,15 @@
 
 <div class="bp-author">
     <div class="bp-overlay"></div>
-    <div class="w-50 mx-auto my-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-1">
-                    <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}'s Avatar" />
-                </div>
-                <div class="col ml-4">
-                    <span class="bp-author-stext">{{ __('main.written_by') }}:</span>
-                    <h3 class="mb-1">{{ $post->author->name }}</h3>
-                    <small>{{ $post->author->about }}</small>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 col-md-1">
+                <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}'s Avatar" />
+            </div>
+            <div class="col ml-4">
+                <span class="bp-author-stext">{{ __('main.written_by') }}:</span>
+                <h3 class="mb-1">{{ $post->author->name }}</h3>
+                <small>{{ $post->author->about }}</small>
             </div>
         </div>
     </div>

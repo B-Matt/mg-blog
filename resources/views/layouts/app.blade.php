@@ -4,13 +4,13 @@
 <head>
     <!-- START General Info -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="{{ URL::current() }}" />
     <link rel="alternate" href="{{ URL::current() }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
     
     @yield('title')
     <meta name="description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="theme-color" content="{{ isset($settings) == true ? $settings->theme_color : '' }}" />
     <link rel="shortcut icon" href="{{ isset($settings) == true ? $settings->icon_fav : '' }}" />
