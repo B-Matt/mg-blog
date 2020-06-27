@@ -133,10 +133,6 @@ class PostsController extends Controller
         $data["slug"] = $this->format_locale_slug($request->title);
         $data["body"] = $this->format_locale_str($request->body);
 
-        //$post->setTranslations('title', $this->format_locale_str($request->title));
-        //$post->setTranslations('body', $this->format_locale_str($request->body));
-        //$post->setTranslations('slug', $this->format_locale_slug($request->title));
-
         $post->update($data);
         $post->retag($request->tags);
         $post->syncCategories([$request->category], true);

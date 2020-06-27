@@ -4,6 +4,7 @@
 .content-section {
     position: relative;
     top: 35px;
+    padding-top: 60px;
     min-height: 350px;
 }
 
@@ -248,11 +249,11 @@
 /*------------------------
 	Blog Posts (Index)
 --------------------------*/
-.blog-posts {
+.bp-all-posts {
     padding: 0px 250px 0px 250px;
 }
 
-.post-link {
+.bp-link {
     position: absolute;
     left: 0;
     top: 0;
@@ -262,83 +263,92 @@
     display: block;
 }
 
-.sticky-post,
-.normal-post {
+.bp-sticky,
+.bp-normal {
     position: relative;
     top: 0;
     cursor: pointer;
     transition: top ease 0.2s;
 }
 
-.sticky-post .card,
-.normal-post .card {
+.bp-sticky .card,
+.bp-normal .card {
     border: none;
     border-radius: 0;
-    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
-    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
 }
 
-.normal-post .card-body {
+.bp-normal .card-body {
     padding: 20px 35px 20px;
 }
 
-.normal-post .card {
-    height: 560px;
-}
-
-.sticky-post .card-img,
-.sticky-post .card-img-top,
-.normal-post .card-img,
-.normal-post .card-img-top {
+.bp-sticky .card-img,
+.bp-sticky .card-img-top,
+.bp-normal .card-img,
+.bp-normal .card-img-top {
     border-radius: 0;
-    max-height: 405px;
+    background-size: cover;
+    background-position: 50%;
 }
 
-.sticky-post {
+.bp-sticky {
     width: 97.5%;
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 }
 
-.normal-post {
+.bp-post-cover {
+    height: 505px;
+}
+
+.bp-normal {
     margin-bottom: 45px;
 }
 
-.normal-post:hover {
+.bp-normal:hover {
     top: -5px;
 }
 
-.sticky-post .card-title,
-.normal-post .card-title {
+.bp-sticky .card-title,
+.bp-normal .card-title {
     font-family: "oswald", sans-serif;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.sticky-post .card-title {
+.bp-sticky .card-title {
     font-size: 1.6rem;
-    letter-spacing: .25rem;
+    letter-spacing: .15rem;
 }
 
-.normal-post .card-title {
+.bp-normal .card-title {
     font-size: 1.35rem;
     letter-spacing: .13rem;
 }
 
-.sticky-post .card-subtitle,
-.normal-post .card-subtitle {
+.bp-sticky .card-subtitle,
+.bp-normal .card-subtitle {
     letter-spacing: .1rem;
 }
 
-.sticky-post .card-text,
-.normal-post .card-text {
+.bp-sticky .card-text,
+.bp-normal .card-text {
     font-size: 1.02em;
 }
 
-.sticky-post .btn-link,
-.normal-post .btn-link {
+.bp-sticky .btn-link,
+.bp-normal .btn-link {
     line-height: .7;
     z-index: 555;
+}
+
+.bp-normal .card-img-top {
+    height: 250px;
+}
+
+.bp-post-body {
+    padding: 5px 10px;
 }
 
 /*------------------------
@@ -463,16 +473,34 @@
 	Responsivness
 --------------------------*/
 @media only screen and (max-width: 767px) {
-    .blog-posts {
+
+    .bp-all-posts {
         padding: 0;
     }
 
-    .sticky-post {
+    .bp-sticky {
         width: 100%;
+        margin: 45px 0px;
+    }
+
+    .bp-sticky .row {
+        display: grid;
+    }
+
+    .bp-post-body {
+        padding: 0px;
     }
 }
 
 @media only screen and (max-width: 479px) {
+
+    .content-section {
+        padding-top: 0px;
+    }
+
+    .bp-post-cover {
+        height: 318px;
+    }
 
     .bp-share {
         margin-left: 7.7rem;
