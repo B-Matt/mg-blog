@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="d-inline-flex mb-4">
-    <h1>{{ __('main.general') }}</h1>
+<div class="d-sm-flex align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ __('main.general') }}</h1>                    
 </div>
 
 <div class="container-fluid mb-5">

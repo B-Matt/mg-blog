@@ -26,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $settings = Settings::find(1);
-        return view('dashboard.index', compact('settings'));
+        $recent_posts = Posts::orderByDesc('created_at')->take(10)->get();
+        return view('dashboard.index', compact('settings', 'recent_posts'));
     }
 
     /**

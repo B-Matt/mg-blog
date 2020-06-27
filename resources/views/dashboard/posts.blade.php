@@ -5,16 +5,15 @@
 @endsection
 
 @section('content')
-<div class="d-inline-flex mb-4">
-    <h1>{{ __('main.post_all') }}</h1>
+<div class="d-sm-flex align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ __('main.post_all') }}</h1>  
     <a href="{{ route('posts.create', app()->getLocale()) }}">                           
         <button class="btn btn-success ml-3 d-inline-flex">
             <i class="dash-icon flaticon-chat"></i>
             <span class="m-1">{{ __('main.post_new') }}</span>
         </button>
-    </a>
+    </a>                     
 </div>
-
 <div class="container-fluid mb-5">
     <div class="row">
         <div class="col w-100">

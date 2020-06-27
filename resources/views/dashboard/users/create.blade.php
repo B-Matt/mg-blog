@@ -4,7 +4,9 @@
 @endsection
 
 @section('content')
-<h1 class="mb-4">{{ isset($user) == false ? "New User" : "Edit User" }}</h1>
+<div class="d-sm-flex align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ isset($user) == false ? "New User" : "Edit User" }}</h1>                    
+</div>
 
 @if ($errors->any())
 <div class="alert alert-danger">

@@ -26,69 +26,25 @@
 [class^="flaticon-"]:after,
 [class*=" flaticon-"]:after {
     font-family: Flaticon;
-    font-size: 20px;
     font-style: normal;
 }
 
-.flaticon-facebook:before {
-    content: "\f100";
-}
-
-.flaticon-youtube-logo:before {
-    content: "\f101";
-}
-
-.flaticon-instagram:before {
-    content: "\f102";
-}
-
-.flaticon-twitter:before {
-    content: "\f103";
-}
-
-.flaticon-menu:before {
-    content: "\f104";
-}
-
-.flaticon-browser:before {
-    content: "\f105";
-}
-
-.flaticon-chat:before {
-    content: "\f106";
-}
-
-.flaticon-settings:before {
-    content: "\f107";
-}
-
-.flaticon-user:before {
-    content: "\f108";
-}
-
-.flaticon-pencil:before {
-    content: "\f109";
-}
-
-.flaticon-search:before {
-    content: "\f10a";
-}
-
-.flaticon-calendar:before {
-    content: "\f10b";
-}
-
-.flaticon-vision:before {
-    content: "\f10c";
-}
-
-.flaticon-trash-bin:before {
-    content: "\f10d";
-}
-
-.flaticon-vision-1:before {
-    content: "\f10e";
-}
+.flaticon-facebook:before { content: "\f100"; }
+.flaticon-youtube-logo:before { content: "\f101"; }
+.flaticon-instagram:before { content: "\f102"; }
+.flaticon-twitter:before { content: "\f103"; }
+.flaticon-menu:before { content: "\f104"; }
+.flaticon-browser:before { content: "\f105"; }
+.flaticon-chat:before { content: "\f106"; }
+.flaticon-settings:before { content: "\f107"; }
+.flaticon-user:before { content: "\f108"; }
+.flaticon-pencil:before { content: "\f109"; }
+.flaticon-search:before { content: "\f10a"; }
+.flaticon-calendar:before { content: "\f10b"; }
+.flaticon-vision:before { content: "\f10c"; }
+.flaticon-trash-bin:before { content: "\f10d"; }
+.flaticon-vision-1:before { content: "\f10e"; }
+.flaticon-next:before { content: "\f10f"; }
 
 .btn:hover {
     text-decoration: none;
