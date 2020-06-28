@@ -15,7 +15,8 @@ return [
     'online' => 'Published?',
     'tags' => 'Tags',
     'category' => 'Category',
-    'name' => 'Name',
+    'activity' => 'Activity',
+    'name' => 'Name',    
     'slug' => 'Slug',
     'description' => 'Description',
     'parent' => 'Parent',
@@ -51,6 +52,12 @@ return [
     'post_edit' => 'Edit post',
     'post_hidden' => 'This post is hidden!',
     'post_hidden_s' => 'HIDDEN',
+
+    'dash_stats_posts' => 'Posts posted',
+    'dash_stats_hidden' => 'Hidden posts',
+    'dash_stats_total' => 'Total users',
+    'dash_stats_categories' => 'Total categories',
+    'dash_all_categories' => 'All categories',
 
     'category_new' => 'Create new category',
     'category_name' => 'Category name',

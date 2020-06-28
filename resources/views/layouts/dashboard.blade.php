@@ -41,20 +41,17 @@
 <body>
     <div id="dash-wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
                 <div class="sidebar-brand-text mx-3">{{ $settings->title }}</div>
             </a>
-            <hr class="sidebar-divider my-0">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('dash.index') }}">
                     <i class="dash-icon flaticon-browser"></i>
                     <span>{{ __('main.dashboard') }}</span>
                 </a>
             </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -62,7 +59,7 @@
                     <span>{{ __('main.posts') }}</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner">
+                    <div class="collapse-inner">
                         <a class="collapse-item" href="{{ route('dash.posts') }}">{{ __('main.post_all') }}</a>
                         <a class="collapse-item" href="{{ route('dash.create') }}">{{ __('main.post_create') }}</a>
                         <a class="collapse-item" href="{{ route('categories.index') }}">{{ __('main.categories') }}</a>
@@ -77,7 +74,7 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner">
+                    <div class="py-2 collapse-inner">
                         <a class="collapse-item" href="{{ route('users.index') }}">{{ __('main.all_users') }}</a>
                         <a class="collapse-item" href="{{ route('users.create') }}">{{ __('main.create_user') }}</a>
                     </div>
@@ -90,7 +87,7 @@
                     <span>{{ __('main.settings') }}</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner">
+                    <div class="py-2 collapse-inner">
                         <a class="collapse-item" href="{{ route('settings.index') }}">{{ __('main.general') }}</a>
                     </div>
                 </div>
@@ -106,7 +103,7 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
+                        <i class="dash-icon flaticon-menu"></i>
                     </button>
 
                     <!-- Topbar Navbar -->

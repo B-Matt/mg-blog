@@ -15,6 +15,7 @@ return [
     'online' => 'Objavljeno?',
     'tags' => 'Tagovi',
     'category' => 'Kategorija',
+    'activity' => 'Aktivnost',
     'name' => 'Naziv',
     'slug' => 'Slug',
     'description' => 'Opis',
@@ -51,6 +52,12 @@ return [
     'post_edit' => 'Uređivanje posta',
     'post_hidden' => 'Ovaj post je skriven!',
     'post_hidden_s' => 'SKRIVENO',
+
+    'dash_stats_posts' => 'Objavljenih postova',
+    'dash_stats_hidden' => 'Skrivenih postova',
+    'dash_stats_total' => 'Ukupno korisnika',
+    'dash_stats_categories' => 'Ukupno kategorija',
+    'dash_all_categories' => 'Sve kategorije',
 
     'category_new' => 'Stvori novu kategoriju',
     'category_name' => 'Naziv kategorije',

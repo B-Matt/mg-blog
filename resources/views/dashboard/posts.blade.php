@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center mb-4">
-    <h1 class="h3 mb-0">{{ __('main.post_all') }}</h1>  
+    <h1 class="h3 ml-4 mb-0">{{ __('main.post_all') }}</h1>  
     <a href="{{ route('posts.create', app()->getLocale()) }}">                           
         <button class="btn btn-success ml-3 d-inline-flex">
             <i class="dash-icon flaticon-chat"></i>

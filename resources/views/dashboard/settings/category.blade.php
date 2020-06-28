@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center mb-4">
-    <h1 class="h3 mb-0">Blog {{ __('main.categories') }}</h1>                    
+    <h1 class="h3 mb-0 ml-1">Blog {{ __('main.categories') }}</h1>                    
 </div>
 
 <div class="container-fluid mb-5">

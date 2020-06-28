@@ -24,6 +24,7 @@ Route::group([
     // BLOG
     Route::any('/',                     'PostsController@index')->name('index');
     Route::get('/tag/{tag?}',           'PostsController@tagged')->name('posts.tagged');
+    Route::get('/category/{category?}', 'PostsController@category')->name('posts.category');
     Route::resource('posts',            'PostsController');
 });
 

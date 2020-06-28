@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Posts;
 use App\User;
 use App\Settings;
+use Rinvex\Categories\Models\Category;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,22 @@ class HomeController extends Controller
     public function index()
     {
         $settings = Settings::find(1);
+        $stats = [];
+        $stats["post_count"] = count(Posts::all());
+        $stats["hidden_count"] = count(Posts::where('online', '=', '0')->get());
+        $stats["user_count"] = count(User::all());
+
+        $categories = Category::get();
         $recent_posts = Posts::orderByDesc('created_at')->take(10)->get();
-        return view('dashboard.index', compact('settings', 'recent_posts'));
+
+        $slugs = [];
+
+        for($i = 0, $len = count($recent_posts); $i < $len; $i++) 
+        {
+            $slugs[$recent_posts[$i]->id] = array_values($recent_posts[$i]->translations['slug']);
+        }
+
+        return view('dashboard.index', compact('settings', 'stats', 'categories', 'recent_posts', 'slugs'));
     }
 
     /**

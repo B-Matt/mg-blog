@@ -155,6 +155,20 @@ class PostsController extends Controller
     }
 
     /**
+     * Shows all posts in certain category.
+     * 
+     * @param String $locale
+     * @param String $tag
+     * @return \Illuminate\Http\Response
+     */
+    public function category($locale, $category) {
+
+        $posts = Posts::withAnyCategories([$category])->paginate(10);
+        $settings = Settings::find(1);
+        return view('posts.index', compact('posts', 'settings'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Posts  $post

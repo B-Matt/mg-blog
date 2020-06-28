@@ -158,6 +158,22 @@
 }
 
 /*------------------------
+	Dashboard (Index)
+--------------------------*/
+.dash-stats .card {
+    color: #2149b5;
+    border-left: .25rem solid #2149b5;
+}
+
+.dash-info .card-header {
+    color: #0b1033;
+}
+
+.dash-info .text-dark {
+    color: #5a5c69 !important;
+}
+
+/*------------------------
 	Blog Posts (Index)
 --------------------------*/
 .bp-sticky .card-title,
@@ -358,6 +374,7 @@
 
     .header-section .menu-list li {
         display: block;
+        width: 100%;
     }
 
     .header-section .menu-list li a {
