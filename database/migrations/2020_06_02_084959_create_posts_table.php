@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('author_id');
             $table->{$this->jsonable()}('title');
             $table->{$this->jsonable()}('slug')->index();
-            $table->string('cover_img');
+            $table->text('cover_img');
             $table->{$this->jsonable()}('body')->nullable();
             $table->char('online', 1);
             $table->timestamps();

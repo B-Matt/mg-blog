@@ -11,9 +11,11 @@
             @foreach ($posts as $post)
             @if($loop->iteration == 1)
             <div class="bp-sticky col mx-auto">
-            @else
+            @elseif($loop->iteration == 2)
             <div class="row">
-                <div class="bp-normal col-md-4">
+            <div class="bp-normal col-md-4">
+            @else
+            <div class="bp-normal col-md-4">
             @endif
                 <a href="{{ route('posts.show', ['locale' => app()->getLocale(),'post' => $post->slug]) }}" class="bp-link"></a>
                 <div class="card mx-auto">
