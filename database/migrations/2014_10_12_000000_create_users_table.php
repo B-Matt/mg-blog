@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name')->index();
             $table->text('avatar');
-            $table->{$this->jsonable()}('about');
+            $table->text('about');
             $table->string('email')->unique();            
             $table->string('password');
             $table->rememberToken();

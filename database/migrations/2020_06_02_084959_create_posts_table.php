@@ -16,10 +16,10 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id');
-            $table->{$this->jsonable()}('title');
-            $table->{$this->jsonable()}('slug')->index();
+            $table->text('title');
+            $table->text('slug')->index();
             $table->text('cover_img');
-            $table->{$this->jsonable()}('body')->nullable();
+            $table->text('body')->nullable();
             $table->char('online', 1);
             $table->timestamps();
         });

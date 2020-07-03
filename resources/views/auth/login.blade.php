@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>Dashboard Login &bull; {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
+@endsection
+
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">
