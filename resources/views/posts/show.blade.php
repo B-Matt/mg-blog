@@ -15,11 +15,11 @@
 <meta property="og:image:secure_url" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
 <meta property="article:publisher" content="https://www.facebook.com/{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
 @foreach($post->tags as $tag)
-    <meta property="article:tag" content="{{ $tag->slug }}" />
+<meta property="article:tag" content="{{ $tag->slug }}" />
 @endforeach
 
 @foreach($post_category as $category)
-    <meta property="article:section" content="{{ $category->slug }}" />
+<meta property="article:section" content="{{ $category->slug }}" />
 @endforeach
 
 <meta property="article:published_time" content="{{ isset($post) == true ? $post->create_time() : '' }}" />
@@ -70,9 +70,9 @@
                 </ul>
                 <span class="bp-share">{{ __('main.post_share') }}:</span>
                 <ul class="bp-social mt-0 px-0">
-                    <li><a href="https://www.facebook.com/MasterGamesStudios/" rel="noopener" target="_blank"
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ URL::current() }}" rel="noopener" target="_blank"
                             title="{{ __('main.share_post_fb') }}" hreflang="en"><i class="flaticon-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/MasterGamesStu2?lang=en" rel="noopener" target="_blank"
+                    <li><a href="https://twitter.com/intent/tweet?text={!! $post->title !!} - {!! URL::current() !!}" rel="noopener" target="_blank"
                             title="{{ __('main.share_post_tw') }}" hreflang="en"><i class="flaticon-twitter"></i></a></li>
                 </ul>
             </div>
