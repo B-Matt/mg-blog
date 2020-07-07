@@ -19,7 +19,9 @@
                 <input type="hidden" name="icon_apple" value="{{ isset($settings) == true ? $settings->icon_apple : '' }}" />
                 <input type="hidden" name="theme_color" value="{{ isset($settings) == true ? $settings->theme_color : '' }}" />
                 <input type="hidden" name="profile_facebook" value="{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
+                <input type="hidden" name="og_img" value="{{ isset($settings) == true ? $settings->og_img : '' }}" />
                 <input type="hidden" name="profile_twitter" value="{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
+                <input type="hidden" name="twitter_img" value="{{ isset($settings) == true ? $settings->twitter_img : '' }}" />
 
                 <div class="form-group">
                     <label for="title">{{ __('main.title') }}</label>

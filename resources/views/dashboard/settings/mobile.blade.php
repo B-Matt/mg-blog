@@ -21,7 +21,9 @@
                 <input type="hidden" name="icon_fav" value="{{ isset($settings) == true ? $settings->icon_fav : '' }}" />
                 <input type="hidden" name="google_tag" value="{{ isset($settings) == true ? $settings->google_tag : '' }}" />
                 <input type="hidden" name="profile_facebook" value="{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
+                <input type="hidden" name="og_img" value="{{ isset($settings) == true ? $settings->og_img : '' }}" />
                 <input type="hidden" name="profile_twitter" value="{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
+                <input type="hidden" name="twitter_img" value="{{ isset($settings) == true ? $settings->twitter_img : '' }}" />
 
                 <div class="form-group">
                     <label for="iconApple">Apple Favicon (180x180)</label>

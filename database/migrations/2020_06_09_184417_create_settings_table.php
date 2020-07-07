@@ -23,7 +23,9 @@ class CreateSettingsTable extends Migration
             $table->string('google_tag')->nullable();
             $table->string('theme_color');
             $table->string('profile_facebook')->nullable();
+            $table->string('og_img')->nullable();
             $table->string('profile_twitter')->nullable();
+            $table->string('twitter_img')->nullable();
             $table->timestamps();
         });
 

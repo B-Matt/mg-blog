@@ -8,7 +8,7 @@
     <link rel="canonical" href="{{ URL::current() }}" />
     <link rel="alternate" href="{{ URL::current() }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
 
-    <title>{!! isset($settings) == true ? $settings->title : config('app.name', 'Laravel') !!} Dashboard</title>
+    <title>{!! isset($settings) == true ? $settings->title : config('app.name', 'Laravel') !!} - Dashboard</title>
     <meta name="description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

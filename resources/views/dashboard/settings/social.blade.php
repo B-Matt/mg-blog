@@ -31,11 +31,19 @@
                     <input type="text" class="form-control" id="facebookProfile" name="profile_facebook" placeholder="MasterGamesStudios" value="{{ isset($settings) == true ? $settings->profile_facebook : '' }}" />
                 </div>
                 <div class="form-group">
+                    <label for="ogImg">OG Image</label>
+                    <input type="url" class="form-control" id="ogImg" name="og_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->og_img : '' }}" required />
+                </div>
+                <div class="form-group">
                     <label for="twitterProfile">
                         {{ __('main.tw_handle') }}<br>
                         <small>eg. https://twitter.com/<b>MasterGamesStu2</b></small>
                     </label>
                     <input type="text" class="form-control" id="twitterProfile" name="profile_twitter" placeholder="MasterGamesStu2" value="{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
+                </div>
+                <div class="form-group">
+                    <label for="twitterImg">Twitter Image</label>
+                    <input type="url" class="form-control" id="twitterImg" name="twitter_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->twitter_img : '' }}" required />
                 </div>
                 <div class="float-right py-3">
                     <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>

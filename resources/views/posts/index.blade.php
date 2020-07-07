@@ -4,6 +4,22 @@
 <title>{!! isset($settings) == true ? $settings->title : config('app.name', 'Laravel') !!}</title>
 @endsection
 
+@section('social-meta')
+<meta property="og:title" content="{{ isset($settings) == true ? $settings->title : config('app.name', 'Laravel') }}" />
+<meta property="og:site_name" content="{{ isset($settings) == true ? $settings->title : config('app.name', 'Laravel') }}" />
+<meta property="og:description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ URL::current() }}" />
+<meta property="og:image" content="{{ isset($settings) == true ? $settings->og_img : '' }}" />
+
+<meta name="twitter:title" content="{{ isset($settings) == true ? $settings->title : config('app.name', 'Laravel') }}" />
+<meta name="twitter:description" content="{{ isset($settings) == true ? $settings->description : '' }}" />
+<meta name="twitter:image" content="{{ isset($settings) == true ? $settings->twitter_img : '' }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
+<meta name="twitter:creator" content="{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
+@endsection
+
 @section('content')
 <div class="container-fluid my-5">
     <div class="bp-all-posts">

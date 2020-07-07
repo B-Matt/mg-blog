@@ -108,7 +108,9 @@ class SettingsController extends Controller
         $settings->icon_apple = $request->icon_apple;
         $settings->theme_color = $request->theme_color;
         $settings->profile_facebook = $request->profile_facebook;
+        $settings->og_img = $request->og_img;
         $settings->profile_twitter = $request->profile_twitter;
+        $settings->twitter_img = $request->twitter_img;        
         $settings->save();
 
         return redirect()->back()->with('notification', 'Settings are updated!');
