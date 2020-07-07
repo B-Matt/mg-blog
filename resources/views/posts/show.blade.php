@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{!! $post->title . ' &bull;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
+<title>{!! $post->title . ' &mdash;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}</title>
 @endsection
 
 @section('social-meta')
