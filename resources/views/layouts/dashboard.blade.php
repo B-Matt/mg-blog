@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="theme-color" content="{{ isset($settings) == true ? $settings->theme_color : '' }}" />
     <link rel="shortcut icon" href="{{ isset($settings) == true ? $settings->icon_fav : '' }}" />
+    <link rel="icon" type="image/png" href="{{ isset($settings) == true ? $settings->icon_fav : '' }}" />
     <link rel="apple-touch-icon" href="{{ isset($settings) == true ? $settings->icon_apple : '' }}" />
     <meta name="robots" content="index, follow">
     <!-- END General Info -->
@@ -44,7 +45,7 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
-                <div class="sidebar-brand-text mx-3">{{ $settings->title }}</div>
+                <div class="sidebar-brand-text mx-3">{{ $settings->short_title }} {{ __('main.dashboard') }}</div>
             </a>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('dash.index') }}">
@@ -89,6 +90,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner">
                         <a class="collapse-item" href="{{ route('settings.index') }}">{{ __('main.general') }}</a>
+                        <a class="collapse-item" href="{{ route('settings.mobile') }}">{{ __('main.mobile') }}</a>
+                        <a class="collapse-item" href="{{ route('settings.social') }}">{{ __('main.social') }}</a>
                     </div>
                 </div>
             </li>
@@ -142,6 +145,20 @@
     <script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
     @yield('extra-js')
     @yield('js-code')
+
+    @if(isset($settings) && isset($settings->google_tag))
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings->google_tag }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', '{{ $settings->google_tag }}');
+    </script>
+    @endif
 </body>
 
 </html>

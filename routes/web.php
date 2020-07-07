@@ -36,9 +36,13 @@ Route::get('/dashboard/create',         'PostsController@create')->name('dash.cr
 Route::post('/posts/visibility/{post?}','PostsController@visibility')->name('posts.visibility')->middleware('auth');
 
 Route::prefix('dashboard')->group(function () {
+
     Route::resource('categories',       'CategoriesController')->middleware('auth');
     Route::resource('settings',         'SettingsController')->middleware('auth');
     Route::resource('users',            'UserController')->middleware('auth');
+
+    Route::get('/mobile',               'SettingsController@mobile')->name('settings.mobile')->middleware('auth');
+    Route::get('/social',               'SettingsController@social')->name('settings.social')->middleware('auth');
 });
 
 // AUTHORIZATION

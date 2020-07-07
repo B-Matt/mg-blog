@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             $table->string('description', 160);
             $table->string('icon_fav')->nullable();
             $table->string('icon_apple')->nullable();
+            $table->string('google_tag')->nullable();
             $table->string('theme_color');
             $table->string('profile_facebook')->nullable();
             $table->string('profile_twitter')->nullable();

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource (general settings).
      *
      * @return \Illuminate\Http\Response
      */
@@ -16,6 +16,28 @@ class SettingsController extends Controller
     {
         $settings = Settings::find(1);
         return view('dashboard.settings.index', compact('settings'));
+    }
+
+    /**
+     * Display a listing of the resource (mobile settings).
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function mobile()
+    {
+        $settings = Settings::find(1);
+        return view('dashboard.settings.mobile', compact('settings'));
+    }
+
+    /**
+     * Display a listing of the resource (social networks settings).
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function social()
+    {
+        $settings = Settings::find(1);
+        return view('dashboard.settings.social', compact('settings'));
     }
 
     /**
@@ -74,6 +96,7 @@ class SettingsController extends Controller
             'title' => 'required|string|max:60',
             'short_title' => 'required|string|max:32',
             'description' => 'required|string|max:160',
+            'google_tag' => 'string|max:13',
         ]);
 
         $settings = Settings::find($id);
@@ -81,13 +104,14 @@ class SettingsController extends Controller
         $settings->short_title = $request->short_title;
         $settings->description = $request->description;
         $settings->icon_fav = $request->icon_fav;
+        $settings->google_tag = $request->google_tag;
         $settings->icon_apple = $request->icon_apple;
         $settings->theme_color = $request->theme_color;
         $settings->profile_facebook = $request->profile_facebook;
         $settings->profile_twitter = $request->profile_twitter;
         $settings->save();
 
-        return redirect()->route('settings.index')->with('notification', 'General settings are updated!');
+        return redirect()->back()->with('notification', 'Settings are updated!');
     }
 
     /**

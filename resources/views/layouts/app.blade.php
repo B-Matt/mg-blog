@@ -102,6 +102,20 @@
         </footer>
         <!-- Footer section end -->
     </div>
+
+    @if(isset($settings) && isset($settings->google_tag))
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings->google_tag }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', '{{ $settings->google_tag }}');
+    </script>
+    @endif
 </body>
 
 </html>
