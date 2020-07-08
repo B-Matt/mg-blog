@@ -12301,10 +12301,17 @@ a.text-dark:focus {
     letter-spacing: .05rem;
     color: #2149b5;
     border-bottom: 3px solid #d949ce5c;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
 }
 
 .bp-post-category a:hover {
     text-decoration: none;
+    border-bottom: 3px solid rgba(33, 73, 181, 0.36);
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
 }
 
 .bp-sticky .btn-link,
