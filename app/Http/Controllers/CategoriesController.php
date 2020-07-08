@@ -73,6 +73,7 @@ class CategoriesController extends Controller
     {
         $name = $category->name;
         $category->delete();
+        
         return redirect()->route('categories.index')->with('notification', '<strong>' . $name .  '</strong> category is deleted!');
     }
 }

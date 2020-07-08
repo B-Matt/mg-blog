@@ -55,7 +55,7 @@
                         <div class="text-xs font-weight-bold text-uppercase mb-1">
                             {{ __('main.dash_stats_categories') }}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-dark">3</div>
+                        <div class="h5 mb-0 font-weight-bold text-dark">{{ count($categories) }}</div>
                     </div>
                 </div>
             </div>
