@@ -111,7 +111,7 @@
     left: 0;
     width: 100%;
     z-index: 999;
-    padding: 0 50px;
+    padding: 0 10px;
     background: white;
     border-bottom: 1px solid #19cc93;
     -webkit-box-shadow: 0px -1px 10px 5px rgba(0, 0, 0, 0.1);
@@ -126,6 +126,7 @@
     display: inline-block;
     float: left;
     padding-top: 24px;
+    padding-left: 50px;
 }
 
 .header-section .logo img {
@@ -204,6 +205,28 @@
     margin-left: -5px;
 }
 
+.header-lang-menu {
+    float:right;
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.header-lang-menu a {
+    line-height: 0;
+    text-decoration: none;
+    border: none;
+}
+
+.header-lang-menu a:hover {
+    text-decoration: none;
+    border: none;
+}
+
+.header-lang-menu a:focus {
+    text-decoration: none;
+    border: none;
+}
+
 /*------------------------
 	Dashboard (Index)
 --------------------------*/
@@ -251,12 +274,35 @@
 
 .bp-post-category a {
     vertical-align: bottom;
+    position: relative;
     display: inline-block;
+    z-index: 555;
     padding-bottom: 3px;
     line-height: 1;
     letter-spacing: .05rem;
     color: #2149b5;
-    border-bottom: 4px solid #2149b5;
+    border-bottom: 3px solid #d949ce5c;
+}
+
+.bp-post-category a:hover {
+    text-decoration: none;
+}
+
+.bp-sticky .btn-link,
+.bp-normal .btn-link {
+    position: relative;
+    z-index: 555;
+    -webkit-transition: all 0.25s ease 0s;
+    -o-transition: all 0.25s ease 0s;
+    transition: all 0.25s ease 0s;
+}
+
+.bp-sticky:hover img,
+.bp-normal:hover img {
+    transform: translate(2px, 0px);
+    -webkit-transition: all 0.25s ease 0s;
+    -o-transition: all 0.25s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 /*------------------------
@@ -304,8 +350,8 @@
 
 .bp-body img {
     margin: 20px 0px 20px 0px;
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
 }
 
 .bp-author {
@@ -841,6 +887,13 @@
         position: absolute;
         right: 35px;
         top: 25px;
+    }
+
+    .header-lang-menu {
+        float: none;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
     }
 
     .buttons button {

@@ -59,6 +59,36 @@
                     <li><a href="https://themastergames.com/" title="Master Games - Website">Home</a></li>
                     <li><a href="https://themastergames.com/products/index" title="Master Games - Products">Products</a></li>
                     <li class="active"><a href="https://themastergames.com/blog/" title="Master Games - Blog">Blog</a></li>
+                    
+                    <?php $locales = config('mgblog.avaliable_locales') ?>
+                    <div class="header-lang-menu dropdown show">
+                        <a class="btn btn-link dropdown-toggle" href="#" role="button" id="langMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @foreach($locales as $locale)
+                                @if($locale['locale'] == app()->getLocale())
+                                    <?php $l = str_replace('en', 'us', $locale['locale']) ?>
+                                    <img src="https://www.countryflags.io/{{ $l }}/shiny/24.png">
+                                @endif
+                            @endforeach
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langMenu">
+                            @if(isset($post) == true)
+                                @foreach($locales as $locale)
+                                <a href="{{ route('index', $locale['locale']) . '/posts/' . $post->getTranslation('slug', $locale['locale']) }}" class="dropdown-item">
+                                    <?php $l = str_replace('en', 'us', $locale['locale']) ?>
+                                    <img src="https://www.countryflags.io/{{ $l }}/shiny/24.png"> {{ $locale['name'] }}
+                                </a>
+                                @endforeach
+                            @else
+                                @foreach($locales as $locale)
+                                <a href="{{ route('index', $locale['locale']) }}" class="dropdown-item">
+                                    <?php $l = str_replace('en', 'us', $locale['locale']) ?>
+                                    <img src="https://www.countryflags.io/{{ $l }}/shiny/24.png"> {{ $locale['name'] }}
+                                </a>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
                 </ul>
             </nav>
         </header>
