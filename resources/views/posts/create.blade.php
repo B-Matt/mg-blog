@@ -88,8 +88,8 @@
                     <label for="postCategory">{{ __('main.category') }}</label>
                     <select class="form-control" id="postCategory" name="category" required>
                     @foreach($categories as $category)
-                        @if(isset($post_category) == true)
-                            @if($category->slug == $post_category[0]["slug"])
+                        @if(isset($post_category) == true && $post_category != [])
+                            @if($category->slug == $post_category["slug"])
                                 <option value="{{ $category->slug }}" selected="selected">{{ $category->name }}</option>
                             @else
                                 <option value="{{ $category->slug }}">{{ $category->name }}</option>

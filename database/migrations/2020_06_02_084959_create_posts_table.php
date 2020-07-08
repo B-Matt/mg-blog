@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('title');
             $table->text('slug')->index();
             $table->text('cover_img');
-            $table->text('body')->nullable();
+            $table->longText('body')->nullable();
             $table->char('online', 1);
             $table->timestamps();
         });
