@@ -12,6 +12,10 @@
     min-height: 500px;
 }
 
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+    background: transparent !important;
+}
+
 /*------------------------
 	Dashboard (Index)
 --------------------------*/

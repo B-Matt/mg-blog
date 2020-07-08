@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./prism');
 
 $(document).ready(function () {
 
