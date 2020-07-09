@@ -19,5 +19,6 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/blog-framework.css',
         'resources/css/mg-theme.css',
     ], 'public/css/app.css')
-    .version()
-    .purgeCss();
+    .purgeCss({
+        enabled: mix.inProduction(),
+    });

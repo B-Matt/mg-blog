@@ -34,11 +34,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- END Scripts -->
 
-    <!-- START Fonts -->
+    <!-- START DNS Prefetch -->
     <link rel='dns-prefetch' href='//fonts.googleapis.com' />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <!-- END Fonts -->
+    <!-- END DNS Prefetch -->
 
     <!-- START Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

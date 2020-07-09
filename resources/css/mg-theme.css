@@ -267,7 +267,7 @@
 }
 
 .bp-post-category {
-    font-family: "Oswald", sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 17px;
     margin-bottom: 10px;
 }
@@ -320,7 +320,7 @@
 }
 
 .bp-header-title {
-    font-family: "Oswald", sans-serif;
+    font-family: Roboto, sans-serif;
     font-weight: 400;
 }
 
@@ -331,7 +331,7 @@
 
 .bp-body h1,
 .bp-body h2 {
-    font: bold 2rem "Oswald", sans-serif;
+    font: bold 2rem Roboto, sans-serif;
     color: #2149b5;
     letter-spacing: 0.05em;
 }
