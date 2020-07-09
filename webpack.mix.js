@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,4 +19,5 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/blog-framework.css',
         'resources/css/mg-theme.css',
     ], 'public/css/app.css')
-    .version();
+    .version()
+    .purgeCss();

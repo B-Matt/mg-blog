@@ -6,8 +6,8 @@
 
 @section('social-meta')
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="{{ isset($post) == true ? $post->title : config('app.name', 'Laravel') }}" />
-<meta property="og:site_name" content="{{ isset($settings) == true ? $settings->title : config('app.name', 'Laravel') }}" />
+<meta property="og:title" content="{!! isset($post) == true ? $post->title : config('app.name', 'Laravel') . ' &mdash;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}" />
+<meta property="og:site_name" content="{!! isset($post) == true ? $post->title : config('app.name', 'Laravel') . ' &mdash;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}" />
 <meta property="og:url" content="{{ URL::current() }}" />
 <meta property="og:description" content="{{ isset($post) == true ? substr(strip_tags($post->body), 0, 310) . '&hellip;' : '' }}" />
 <meta property="og:type" content="article" />
@@ -25,10 +25,10 @@
 <meta property="article:published_time" content="{{ isset($post) == true ? $post->create_time() : '' }}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:description" content="{{ isset($post) == true ? substr(strip_tags($post->body), 0, 310) . '&hellip;' : '' }}" />
-<meta name="twitter:title" content="{{ isset($post) == true ? $post->title : config('app.name', 'Laravel') }}" />
+<meta name="twitter:title" content="{!! isset($post) == true ? $post->title : config('app.name', 'Laravel') . ' &mdash;' !!} {!! isset($settings) == true ? $settings->short_title : config('app.name', 'Laravel') !!}" />
 <meta name="twitter:site" content="@{{ isset($settings) == true ? $settings->profile_twitter : '' }}" />
 <meta name="twitter:image" content="{{ isset($post) == true ? $post->cover_img : '' }}" />
-<meta name="twitter:creator" content="@{{ isset($post) == true ? $post->cover_img : '' }}" />
+<meta name="twitter:creator" content="@{{ isset($post) == true ? $post->profile_twitter : '' }}" />
 @endsection
 
 @section('json-ld')

@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ogImg">OG Image</label>
-                    <input type="url" class="form-control" id="ogImg" name="og_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->og_img : '' }}" required />
+                    <input type="url" class="form-control" id="ogImg" name="og_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->og_img : '' }}" />
                 </div>
                 <div class="form-group">
                     <label for="twitterProfile">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="twitterImg">Twitter Image</label>
-                    <input type="url" class="form-control" id="twitterImg" name="twitter_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->twitter_img : '' }}" required />
+                    <input type="url" class="form-control" id="twitterImg" name="twitter_img" placeholder="URL" value="{{ isset($settings) == true ? $settings->twitter_img : '' }}" />
                 </div>
                 <div class="float-right py-3">
                     <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>
