@@ -1,19 +1,29 @@
 {
-    "name": "laravel/laravel",
+    "name": "mastergames/blog-cms",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Master Games Blog CMS.",
     "keywords": [
-        "framework",
-        "laravel"
+        "cms",
+        "laravel",
+        "blog",
+        "master games",
+        "mg"
     ],
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "albertcht/invisible-recaptcha": "^1.9",
+        "davejamesmiller/laravel-breadcrumbs": "5.x",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/helpers": "^1.2",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "rinvex/laravel-categories": "^4.0",
+        "rtconner/laravel-tagging": "~4.0",
+        "spatie/laravel-translatable": "4.2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
