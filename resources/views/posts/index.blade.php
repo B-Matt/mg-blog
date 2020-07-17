@@ -50,7 +50,7 @@
                                 <div class="bp-post-body">
                                     <div class="bp-post-category">
                                         @foreach($p->categories as $category)
-                                        <a href="{{ $category->slug }}">{{ $category->name }}</a>
+                                        <a href="{{ config('app.url', '') }}/{{ app()->getLocale() }}/category/{{ $category->slug }}">{{ $category->name }}</a>
                                         @endforeach
                                     </div>
                                     <h5 class="card-title">{{ $p->title }}</h5>

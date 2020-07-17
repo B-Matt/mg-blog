@@ -89,7 +89,7 @@
                     <select class="form-control" id="postCategory" name="category" required>
                     @foreach($categories as $category)
                         @if(isset($post_category) == true && $post_category != [])
-                            @if($category->slug == $post_category["slug"])
+                            @if($category->slug == $post_category[0]["slug"])
                                 <option value="{{ $category->slug }}" selected="selected">{{ $category->name }}</option>
                             @else
                                 <option value="{{ $category->slug }}">{{ $category->name }}</option>
